@@ -1,0 +1,31 @@
+alias v='nvim'
+alias vrc='nvim ~/.config/nvim/init.vim'
+alias neomutt='cd ~/downloads && neomutt && polybar-msg hook mail 1' #this places attachments in downloads
+alias wget='wget --hsts-file="$XDG_CACHE_HOME/wget-hsts"'
+alias todo='todo.sh -d "$HOME/.config/todo/config"'
+alias mv='mv -i'
+alias cp='cp -i'
+alias rm='rm -i'
+alias yay='yay --pacman powerpill'
+alias gdb='gdb -nh -x "$XDG_CONFIG_HOME"/gdb/init'
+alias ls='ls --color=auto --group-directories-first'
+alias grep='grep --color=auto'
+alias fgrep='fgrep --color=auto'
+alias egrep='egrep --color=auto'
+alias ll='ls -alhFA'
+alias la='ls -A'
+alias l='ls -CF'
+
+
+ff () { find ~/dotfiles -maxdepth 3 -type f -follow -print | fzf --preview 'bat --color=always {}' | xargs -o -r $EDITOR; }
+uni () { find ~/documents/studium ~/Archive/studium -name "*.pdf" -follow -print | fzf | xargs -I {} -r $VIEWER --fork "{}"; }
+ur () { find ~/documents/uni_repos -name "*.tex" -follow -print | fzf | xargs -o -r $EDITOR; }
+of () { cd; fd -t f -E Games | fzf | xargs -o -r $EDITOR; }
+timer () {
+    date1=$((`date +%s` + $1));
+    while [ "$date1" -ge `date +%s` ]; do
+        echo -ne "$(date -u --date @$(($date1 - `date +%s`)) +%H:%M:%S)\r";
+        sleep 0.1
+    done
+    notify-send "$1 second timer completed."
+}

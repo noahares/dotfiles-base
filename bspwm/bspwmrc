@@ -1,0 +1,50 @@
+#! /bin/sh
+
+bspc rule -r "*"
+
+if [[ $(hostname) == 'arch2' ]]; then
+    primary=$(bspc query --monitors --names | head -n 1)
+    secondary=$(bspc query --monitors --names | grep -v $primary | head -n 1)
+    xrandr --output HDMI1 --auto --right-of $primary
+    if [[ $secondary ]]; then
+        bspc monitor $primary -d 1 2 3 4 5
+        bspc monitor $secondary -d 6 7 8 9 10
+    else
+        bspc monitor $primary -d 1 2 3 4 5 6 7 8 9 10
+    fi
+elif [[ $(hostname) == 'arch' ]]; then
+    xrandr --output DisplayPort-1 --auto --left-of DisplayPort-0
+    bspc monitor DisplayPort-0 -d 1 2 3 4 5
+    bspc monitor DisplayPort-1 -d 6 7 8 9 10
+fi
+
+setbg.sh
+launch_polybar.sh &
+nextcloud --background &
+messengers.sh &
+#mycroft-start all &
+
+bspc config border_width         1
+bspc config window_gap          10
+
+bspc config split_ratio          0.55
+bspc config automatic_scheme     alternate
+bspc config initial_polarity     second_child
+bspc config borderless_monocle   true
+bspc config gapless_monocle      true
+bspc config remove_disabled_monitors true
+bspc config remove_unplugged_monitors true
+bspc config merge_overlapping_monitors true
+
+bspc config focus_follows_pointer true
+
+bspc rule -a Gimp state=floating follow=on
+#bspc rule -a firefox desktop=2
+bspc rule -a Steam desktop=5
+bspc rule -a Lutris desktop=5
+#bspc rule -a Zathura state=tiled
+bspc rule -a calc state=floating sticky=on
+bspc rule -a mpv state=floating
+bspc rule -a TelegramDesktop state=floating
+bspc rule -a Zulip state=floating
+bspc rule -a Slack state=floating

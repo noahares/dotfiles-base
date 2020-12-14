@@ -1,0 +1,40 @@
+PATH=$PATH:$HOME/privateProjects/mycroft-core/bin
+PATH=$PATH:$HOME/.local/bin
+PATH=$PATH:$HOME/repos/scripts
+export EDITOR="nvim"
+export TERMINAL="st"
+export BROWSER="qutebrowser"
+export VIEWER="zathura"
+export XDG_CONFIG_HOME=$HOME/.config
+export XDG_CACHE_HOME=$HOME/.cache
+export XDG_DATA_HOME=$HOME/.local/share
+export ZDOTDIR="$XDG_CONFIG_HOME"/zsh
+export ELINKS_CONFDIR="$XDG_CONFIG_HOME"/elinks
+export GNUPGHOME="$XDG_DATA_HOME"/gnupg
+export GTK2_RC_FILES="$XDG_CONFIG_HOME"/gtk-2.0/gtkrc
+export _JAVA_OPTIONS=-Djava.util.prefs.userRoot="$XDG_CONFIG_HOME"/java
+export NOTMUCH_CONFIG="$XDG_CONFIG_HOME"/notmuch/notmuchrc
+export RANDFILE="$XDG_CONFIG_HOME"/randfile
+export SQLITE_HISTORY=$XDG_DATA_HOME/sqlite_history
+export TEXMFHOME="$XDG_DATA_HOME"/texmf
+export TEXMFVAR="$XDG_DATA_HOME"/texlive/texmf-var
+export TEXMFCONFIG="$XDG_DATA_HOME"/texlive/texmf-config
+export BASH_COMPLETION_USER_FILE="$XDG_CONFIG_HOME"/bash-completion/bash_completion
+export DOCKER_CONFIG="$XDG_CONFIG_HOME"/docker
+export LESSHISTFILE=-
+export NPM_CONFIG_USERCONFIG=$XDG_CONFIG_HOME/npm/npmrc
+export CARGO_HOME="$XDG_DATA_HOME"/cargo
+export WINEPREFIX="$XDG_DATA_HOME"/wineprefixes/default
+export PASSWORD_STORE_DIR="$XDG_CONFIG_HOME"/pwd-store
+export GOPATH="$XDG_DATA_HOME"/go
+export TERMINFO="$XDG_DATA_HOME"/terminfo
+export TERMINFO_DIRS="$XDG_DATA_HOME"/terminfo:/usr/share/terminfo
+export XAUTHORITY="$XDG_RUNTIME_DIR"/Xauthority
+export XINITRC="$XDG_CONFIG_HOME"/X11/xinitrc
+export HISTFILE="$XDG_DATA_HOME"/zsh/history
+export TS3_CONFIG_DIR="$XDG_CONFIG_HOME"/ts3client
+export FZF_DEFAULT_OPTS="--layout=reverse --height 40% --multi --no-mouse"
+export FZF_DEFAULT_COMMAND='fd --type f --follow'
+export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
+export KITCAR_REPO_PATH=$HOME/kitcar
+export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01'
