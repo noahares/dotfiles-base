@@ -58,6 +58,8 @@ set number relativenumber
 set lazyredraw
 " matching parenthesis
 set showmatch
+" switch buffer without saving them
+set hidden
 
 " show lines bellow cursor
 set scrolloff=5
