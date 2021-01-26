@@ -122,13 +122,16 @@ config.set('content.javascript.enabled', True, 'chrome://*/*')
 # Type: Bool
 config.set('content.javascript.enabled', True, 'qute://*/*')
 
+# Enable Rust Adblock
+config.set('content.blocking.method', 'adblock')
+
 config.bind(',v', 'spawn mpv {url}')
 config.bind(',V', 'hint links spawn mpv {hint-url}')
 
 # cycle through themes
-config.bind(',gr', 'config-cycle content.user_stylesheets ~/privateProjects/solarized-everything-css/css/gruvbox/gruvbox-all-sites.css ""')
-config.bind(',sd', 'config-cycle content.user_stylesheets ~/privateProjects/solarized-everything-css/css/solarized-dark/solarized-dark-all-sites.css ""')
-config.bind(',sl', 'config-cycle content.user_stylesheets ~/privateProjects/solarized-everything-css/css/solarized-light/solarized-light-all-sites.css ""')
+config.bind(',gr', 'config-cycle content.user_stylesheets ~/repos/solarized-everything-css/css/gruvbox/gruvbox-all-sites.css ""')
+config.bind(',sd', 'config-cycle content.user_stylesheets ~/repos/solarized-everything-css/css/solarized-dark/solarized-dark-all-sites.css ""')
+config.bind(',sl', 'config-cycle content.user_stylesheets ~/repos/solarized-everything-css/css/solarized-light/solarized-light-all-sites.css ""')
 
 # convenient new tab
 config.bind('t', 'set-cmd-text -s :open -t')
@@ -141,4 +144,4 @@ config.bind('<space>', 'set-cmd-text :')
 
 # open or add bookmarks
 config.bind(',b', 'spawn bookmarks')
-config.bind(',B', 'set-cmd-text -s :spawn --userscript ~/dotfiles/scripts/add_bookmark')
+config.bind(',B', 'set-cmd-text -s :spawn --userscript ~/repos/scripts/add_bookmark')
