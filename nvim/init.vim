@@ -2,18 +2,20 @@ let mapleader=","
 
 " vim-plug {{{
 call plug#begin(stdpath('data') . '/plugged')
-Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
-Plug 'junegunn/fzf.vim'
 Plug 'tpope/vim-fugitive'
 Plug 'dylanaraps/wal.vim'
 Plug 'morhetz/gruvbox'
 Plug 'neovim/nvim-lspconfig'
 Plug 'nvim-treesitter/nvim-treesitter'
 Plug 'nvim-lua/completion-nvim'
+Plug 'nvim-lua/popup.nvim'
+Plug 'nvim-lua/plenary.nvim'
+Plug 'nvim-telescope/telescope.nvim'
 Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
 Plug 'norcalli/nvim-colorizer.lua'
-Plug '~/privateProjects/lua_learning/nvim-commenter'
+Plug '~/repos/nvim-commenter'
+Plug '~/repos/telescope-bibtex'
 call plug#end()
 " }}}
 
@@ -134,9 +136,7 @@ augroup filetype_tex
   autocmd!
   " format tex files on save
   autocmd BufWritePre *.tex :normal gg=G``
-  " use fzf to complete bib references
-  autocmd FileType tex inoremap <leader>cr \cite{}<esc>i<c-r>=fzf#vim#complete(
-        \ "grep -o '^@.*{.*' *.bib \| sed -e 's/^@.*{//;s/,$//'")<cr><esc>A
+  autocmd FileType tex inoremap <leader>cr <cmd>BibtexPicker<cr>
 augroup END
 " }}}
 
@@ -171,14 +171,16 @@ set statusline+=%=
 set statusline+=\ %c:%l/%L
 " }}}
 
-"fzf {{{
-nnoremap <leader>b :Buffers<CR>
-nnoremap <leader>o :FZF<CR>
-nnoremap <leader>h :History<CR>
-nnoremap <leader>ch :History:<CR>
-nnoremap <leader>c :Commands<CR>
-nnoremap <leader>f :BLines<CR>
-noremap <F1> :Helptags<CR>
+" telescope {{{
+lua require('telescope_config')
+nnoremap <leader>b <cmd>Telescope buffers<cr>
+nnoremap <leader>o <cmd>Telescope find_files<cr>
+nnoremap <leader>h <cmd>Telescope oldfiles<cr>
+nnoremap <leader>c <cmd>Telescope commands<cr>
+nnoremap <leader>ch <cmd>Telescope command_history<cr>
+nnoremap <leader>f <cmd>Telescope live_grep<cr>
+nnoremap <leader>z <cmd>Telescope spell_suggest<cr>
+noremap <F1> <cmd>Telescope help_tags<cr>
 " }}}
 
 " mutt settings {{{
@@ -246,14 +248,11 @@ lua require('ts_config')
 " cpp/h setings {{{
 augroup filetype_cpp_h
   autocmd!
-  "autocmd FileType cpp,h noremap <buffer> <F4> :vsplit %:p:s,.h$,.X123X,:s,.cpp$,.h,:s,.X123X$,.cpp,<CR>
   autocmd FileType cpp,h nnoremap <buffer> <F4> <cmd>ClangdSwitchSourceHeader<cr>
-  function! Formatonsave()
-    let l_formatdiff = 1
-    py3f /usr/share/clang/clang-format.py
-  endfunction
-  "autocmd BufWritePre *.h,*.cpp call Formatonsave()
   autocmd FileType cpp,h packadd termdebug
+  autocmd FileType cpp,h setlocal cindent
+  "autocmd FileType cpp,h setlocal equalprg=clang-format\ -style=Google
+  autocmd FileType cpp,h setlocal cino=j1,(0,ws,Ws,N+s,t0,g0,+0
 augroup END
 " }}}
 
