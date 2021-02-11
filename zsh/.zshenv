@@ -1,6 +1,7 @@
 PATH=$PATH:$HOME/privateProjects/mycroft-core/bin
 PATH=$PATH:$HOME/.local/bin
 PATH=$PATH:$HOME/repos/scripts
+PATH=$PATH:$HOME/repos/scripts/yeelight
 export EDITOR="nvim"
 export TERMINAL="st"
 export BROWSER="qutebrowser"

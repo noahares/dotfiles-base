@@ -18,3 +18,4 @@ source $ZDOTDIR/aliases
 (cat ~/.cache/wal/sequences &)
 source /usr/share/fzf/key-bindings.zsh
 source /usr/share/fzf/completion.zsh
+[[ -r "/usr/share/z/z.sh" ]] && source /usr/share/z/z.sh

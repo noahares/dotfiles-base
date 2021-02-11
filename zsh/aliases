@@ -1,4 +1,5 @@
 alias v='nvim'
+alias vim='nvim'
 alias vrc='nvim ~/.config/nvim/init.vim'
 alias neomutt='cd ~/downloads && neomutt && polybar-msg hook mail 1' #this places attachments in downloads
 alias wget='wget --hsts-file="$XDG_CACHE_HOME/wget-hsts"'
@@ -6,7 +7,6 @@ alias todo='todo.sh -d "$HOME/.config/todo/config"'
 alias mv='mv -i'
 alias cp='cp -i'
 alias rm='rm -i'
-alias yay='yay --pacman powerpill'
 alias gdb='gdb -nh -x "$XDG_CONFIG_HOME"/gdb/init'
 alias ls='ls --color=auto --group-directories-first'
 alias grep='grep --color=auto'
