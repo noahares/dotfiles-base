@@ -130,16 +130,6 @@ noremap <leader>sp :setlocal spell spelllang=de
 
 " }}}
 
-" latex {{{
-let g:tex_flavor = "latex" " treat all tex as latex
-augroup filetype_tex
-  autocmd!
-  " format tex files on save
-  autocmd BufWritePre *.tex :normal gg=G``
-  autocmd FileType tex inoremap <leader>cr <cmd>BibtexPicker<cr>
-augroup END
-" }}}
-
 " dont use arrow keys you filthy casual {{{
 nnoremap <Up> <NOP>
 nnoremap <Down> <NOP>
@@ -181,6 +171,17 @@ nnoremap <leader>ch <cmd>Telescope command_history<cr>
 nnoremap <leader>f <cmd>Telescope live_grep<cr>
 nnoremap <leader>z <cmd>Telescope spell_suggest<cr>
 noremap <F1> <cmd>Telescope help_tags<cr>
+" }}}
+
+" latex {{{
+lua require"telescope".load_extension("bibtex")
+let g:tex_flavor = "latex" " treat all tex as latex
+augroup filetype_tex
+  autocmd!
+  " format tex files on save
+  autocmd BufWritePre *.tex :normal gg=G``
+  autocmd FileType tex inoremap <leader>cr <cmd>Telescope bibtex<cr>
+augroup END
 " }}}
 
 " mutt settings {{{

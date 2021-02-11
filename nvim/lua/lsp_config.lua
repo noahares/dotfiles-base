@@ -31,6 +31,22 @@ local custom_attach = function(client)
   map('n', '<leader>D', '<cmd>lua vim.lsp.diagnostic.goto_prev()<CR>')
 end
 
+local function get_lua_runtime()
+    local result = {}
+    for _, path in pairs(vim.api.nvim_list_runtime_paths()) do
+        local lua_path = path .. "/lua/"
+        if vim.fn.isdirectory(lua_path) == 1 then
+            result[lua_path] = true
+        end
+    end
+
+    -- This loads the `lua` files from nvim into the runtime.
+    result[vim.fn.expand("$VIMRUNTIME/lua")] = true
+    result[vim.fn.expand("$VIMRUNTIME/lua/vim/lsp")] = true
+
+    return result
+end
+
 -- setup all lsp servers here
 local nvim_lsp = require'lspconfig'
 nvim_lsp.clangd.setup{on_attach=custom_attach}
@@ -43,16 +59,20 @@ nvim_lsp.sumneko_lua.setup{
   on_attach=custom_attach,
   settings = {
     Lua = {
-      runtime = { version = "LuaJIT", path = vim.split(package.path, ';'), },
+      runtime = {
+        version = "LuaJIT",
+        path = {
+          vim.split(package.path, ';'),
+        },
+      },
       completion = { keywordSnippet = "Disable", },
       diagnostics = { enable = true, globals = {
         "vim", "describe", "it", "before_each", "after_each" }
       },
       workspace = {
-        library = {
-          [vim.fn.expand("$VIMRUNTIME/lua")] = true,
-          [vim.fn.expand("$VIMRUNTIME/lua/vim/lsp")] = true,
-        }
+        library = get_lua_runtime(),
+        maxPreload = 1000,
+        preloadFileSize = 1000,
       }
     }
   }
