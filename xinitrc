@@ -34,7 +34,7 @@ setxkbmap -layout de
 sxhkd &
 easystroke --config-dir $XDG_CONFIG_HOME/easystroke/ enable &
 unclutter &
-picom -f &
+picom -f --experimental-backends &
 dunst &
 mpd &
 
