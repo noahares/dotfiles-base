@@ -62,6 +62,10 @@ set lazyredraw
 set showmatch
 " switch buffer without saving them
 set hidden
+" better searching
+set ignorecase
+set smartcase
+set nohlsearch
 
 " show lines bellow cursor
 set scrolloff=5
@@ -73,12 +77,16 @@ set shiftwidth=2
 set tabstop=2
 set softtabstop=2
 
-" search
-set nohlsearch
-
 " split in reasonable positions
 set splitbelow splitright
+" split resizing
+nnoremap <silent> <leader>- :vertical resize -10<CR>
+nnoremap <silent> <leader>+ :vertical resize +10<CR>
+nnoremap <silent> <leader>_ :resize -10<CR>
+nnoremap <silent> <leader>* :resize +10<CR>
 
+"write to ----READONLY---- files
+cnoremap w!! execute 'silent! write !sudo tee % >/dev/null' <bar> edit!
 
 " folds for most languages
 augroup folds
@@ -114,7 +122,7 @@ nnoremap <leader>sv :source $MYVIMRC<CR>
 " word case toggle visual ~
 
 " quote quickly
-inoremap <leader>" <Esc>viw<Esc>a"<Esc>bi"<Esc>lela
+inoremap <leader>" <Esc>viw<Esc>a"<Esc>bi"<Esc>leli
 vnoremap <leader>" <Esc>`<i"<Esc>`>ea"<Esc>
 
 " substitute shortcut
@@ -163,14 +171,6 @@ set statusline+=\ %c:%l/%L
 
 " telescope {{{
 lua require('telescope_config')
-nnoremap <leader>b <cmd>Telescope buffers<cr>
-nnoremap <leader>o <cmd>Telescope find_files<cr>
-nnoremap <leader>h <cmd>Telescope oldfiles<cr>
-nnoremap <leader>c <cmd>Telescope commands<cr>
-nnoremap <leader>ch <cmd>Telescope command_history<cr>
-nnoremap <leader>f <cmd>Telescope live_grep<cr>
-nnoremap <leader>z <cmd>Telescope spell_suggest<cr>
-noremap <F1> <cmd>Telescope help_tags<cr>
 " }}}
 
 " latex {{{
@@ -179,7 +179,7 @@ let g:tex_flavor = "latex" " treat all tex as latex
 augroup filetype_tex
   autocmd!
   " format tex files on save
-  autocmd BufWritePre *.tex :normal gg=G``
+  "autocmd BufWritePre *.tex :normal gg=G``
   autocmd FileType tex inoremap <leader>cr <cmd>Telescope bibtex<cr>
 augroup END
 " }}}
@@ -194,6 +194,7 @@ augroup mutt
 augroup END
 " }}}
 
+" TODO: port to lua with plenary <11-02-21, @noahares> "
 " smart cwd {{{
 nnoremap cf :cd %:p:h \| pwd<CR>
 nnoremap cr :call <SID>CdToRepoRoot()<CR>
