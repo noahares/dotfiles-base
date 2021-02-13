@@ -1,22 +1,8 @@
 let mapleader=","
 
-" vim-plug {{{
-call plug#begin(stdpath('data') . '/plugged')
-Plug 'tpope/vim-fugitive'
-Plug 'dylanaraps/wal.vim'
-Plug 'morhetz/gruvbox'
-Plug 'neovim/nvim-lspconfig'
-Plug 'nvim-treesitter/nvim-treesitter'
-Plug 'nvim-lua/completion-nvim'
-Plug 'nvim-lua/popup.nvim'
-Plug 'nvim-lua/plenary.nvim'
-Plug 'nvim-telescope/telescope.nvim'
-Plug 'SirVer/ultisnips'
-Plug 'honza/vim-snippets'
-Plug 'norcalli/nvim-colorizer.lua'
-Plug '~/repos/nvim-commenter'
-Plug '~/repos/telescope-bibtex'
-call plug#end()
+" plugins {{{
+lua require("plugins")
+autocmd BufWritePost plugins.lua PackerCompile
 " }}}
 
 " Vimscript file settings {{{
@@ -174,7 +160,6 @@ lua require('telescope_config')
 " }}}
 
 " latex {{{
-lua require"telescope".load_extension("bibtex")
 let g:tex_flavor = "latex" " treat all tex as latex
 augroup filetype_tex
   autocmd!
