@@ -70,8 +70,8 @@ _G.packer_plugins = {
   },
   ["telescope-bibtex"] = {
     config = { "\27LJ\1\2K\0\0\2\0\4\0\a4\0\0\0%\1\1\0>\0\2\0027\0\2\0%\1\3\0>\0\2\1G\0\1\0\vbibtex\19load_extension\14telescope\frequire\0" },
-    loaded = true,
-    path = "/home/ares/.local/share/nvim/site/pack/packer/start/telescope-bibtex"
+    loaded = false,
+    path = "/home/ares/.local/share/nvim/site/pack/packer/opt/telescope-bibtex"
   },
   ["telescope.nvim"] = {
     loaded = true,
@@ -95,8 +95,11 @@ _G.packer_plugins = {
   }
 }
 
--- Config for: telescope-bibtex
-try_loadstring("\27LJ\1\2K\0\0\2\0\4\0\a4\0\0\0%\1\1\0>\0\2\0027\0\2\0%\1\3\0>\0\2\1G\0\1\0\vbibtex\19load_extension\14telescope\frequire\0", "config", "telescope-bibtex")
+vim.cmd [[augroup packer_load_aucmds]]
+vim.cmd [[au!]]
+  -- Filetype lazy-loads
+vim.cmd [[au FileType tex ++once lua require("packer.load")({'telescope-bibtex'}, { ft = "tex" }, _G.packer_plugins)]]
+vim.cmd("augroup END")
 END
 
 catch

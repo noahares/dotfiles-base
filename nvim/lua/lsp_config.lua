@@ -13,17 +13,17 @@ local custom_attach = function(client)
   -- automatic diagnostics popup
   vim.api.nvim_command('autocmd CursorHold <buffer> lua vim.lsp.diagnostic.show_line_diagnostics()')
   -- speedup diagnostics popup
-  vim.api.nvim_command('set updatetime=1000')
+  vim.o.updatetime=1000
 
-	utils.nnoremap('gD','<cmd>lua vim.lsp.buf.declaration()<CR>')
-	utils.nnoremap('<c-]>','<cmd>lua vim.lsp.buf.definition()<CR>')
-	utils.nnoremap('K','<cmd>lua vim.lsp.buf.hover()<CR>')
-	utils.nnoremap('gr','<cmd>lua vim.lsp.buf.references()<CR>')
-	utils.nnoremap('gs','<cmd>lua vim.lsp.buf.signature_help()<CR>')
-	utils.nnoremap('gi','<cmd>lua vim.lsp.buf.implementation()<CR>')
-	utils.nnoremap('<F5>','<cmd>lua vim.lsp.buf.code_action()<CR>')
-	utils.nnoremap('<leader>r','<cmd>lua vim.lsp.buf.rename()<CR>')
-	utils.nnoremap('<leader>=', '<cmd>lua vim.lsp.buf.formatting()<CR>')
+  utils.nnoremap('gD','<cmd>lua vim.lsp.buf.declaration()<CR>')
+  utils.nnoremap('<c-]>','<cmd>lua vim.lsp.buf.definition()<CR>')
+  utils.nnoremap('K','<cmd>lua vim.lsp.buf.hover()<CR>')
+  utils.nnoremap('gr','<cmd>lua vim.lsp.buf.references()<CR>')
+  utils.nnoremap('gs','<cmd>lua vim.lsp.buf.signature_help()<CR>')
+  utils.nnoremap('gi','<cmd>lua vim.lsp.buf.implementation()<CR>')
+  utils.nnoremap('<F5>','<cmd>lua vim.lsp.buf.code_action()<CR>')
+  utils.nnoremap('<leader>r','<cmd>lua vim.lsp.buf.rename()<CR>')
+  utils.nnoremap('<leader>=', '<cmd>lua vim.lsp.buf.formatting()<CR>')
   utils.nnoremap('<leader>d', '<cmd>lua vim.lsp.diagnostic.goto_next()<CR>')
   utils.nnoremap('<leader>D', '<cmd>lua vim.lsp.diagnostic.goto_prev()<CR>')
 end

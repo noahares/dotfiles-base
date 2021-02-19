@@ -1,0 +1,5 @@
+vim.g.UltiSnipsExpandTrigger='<leader>s'
+vim.g.UltiSnipsListSnippets='<c-l>'
+vim.g.UltiSnipsJumpForwardTrigger='<c-b>'
+vim.g.UltiSnipsJumpBackwardTrigger='<c-z>'
+vim.g.UltiSnipsEditSplit='vertical'
