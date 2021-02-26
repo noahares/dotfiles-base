@@ -1,51 +1,56 @@
 local Utils = {}
 
-function Utils.map(type, key, value)
-  vim.api.nvim_set_keymap(type, key, value, {})
+function Utils.map(type, key, value, opts)
+  local options = opts or {}
+  vim.api.nvim_set_keymap(type, key, value, options)
 end
 
-function Utils.noremap(type, key, value)
-  vim.api.nvim_set_keymap(type,key,value,{noremap = true, --[[ silent = true ]]})
+function Utils.noremap(type, key, value, opts)
+  local options = {noremap = true}
+  if opts then
+    vim.tbl_extend('force', options, opts)
+  end
+  vim.api.nvim_set_keymap(type,key,value, options)
 end
 
-function Utils.nnoremap(key, value)
-  Utils.noremap('n', key, value)
+function Utils.nnoremap(key, value, opts)
+  Utils.noremap('n', key, value, opts)
 end
 
-function Utils.inoremap(key, value)
-  Utils.noremap('i', key, value)
+function Utils.inoremap(key, value, opts)
+  Utils.noremap('i', key, value, opts)
 end
 
-function Utils.vnoremap(key, value)
-  Utils.noremap('v', key, value)
+function Utils.vnoremap(key, value, opts)
+  Utils.noremap('v', key, value, opts)
 end
 
-function Utils.xnoremap(key, value)
-  Utils.noremap('x', key, value)
+function Utils.xnoremap(key, value, opts)
+  Utils.noremap('x', key, value, opts)
 end
 
-function Utils.tnoremap(key, value)
-  Utils.noremap('t', key, value)
+function Utils.tnoremap(key, value, opts)
+  Utils.noremap('t', key, value, opts)
 end
 
-function Utils.cnoremap(key, value)
-  Utils.noremap('c', key, value)
+function Utils.cnoremap(key, value, opts)
+  Utils.noremap('c', key, value, opts)
 end
 
-function Utils.nmap(key, value)
-  Utils.map('n', key, value)
+function Utils.nmap(key, value, opts)
+  Utils.map('n', key, value, opts)
 end
 
-function Utils.imap(key, value)
-  Utils.map('i', key, value)
+function Utils.imap(key, value, opts)
+  Utils.map('i', key, value, opts)
 end
 
-function Utils.vmap(key, value)
-  Utils.map('v', key, value)
+function Utils.vmap(key, value, opts)
+  Utils.map('v', key, value, opts)
 end
 
-function Utils.tmap(key, value)
-  Utils.map('t', key, value)
+function Utils.tmap(key, value, opts)
+  Utils.map('t', key, value, opts)
 end
 
 P = function(stuff) return print(vim.inspect(stuff)) end

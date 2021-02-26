@@ -75,3 +75,7 @@ utils.nnoremap("<leader>dd", ":TermdebugCommand")
 utils.nnoremap("cf", "<cmd>cd %:p:h | pwd<cr>")
 require("project_root")
 utils.nnoremap("cr", "<cmd>lua find_project_root()<cr>")
+
+-- tab for completion menu
+utils.inoremap("<Tab>", 'pumvisible() ? "\\<C-n>" : "\\<Tab>"', {expr = true})
+utils.inoremap("<S-Tab>", 'pumvisible() ? "\\<C-p>" : "\\<Tab>"', {expr = true})
