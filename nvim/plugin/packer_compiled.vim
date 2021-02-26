@@ -41,6 +41,7 @@ _G.packer_plugins = {
     path = "/home/ares/.local/share/nvim/site/pack/packer/start/gruvbox"
   },
   ["nvim-colorizer.lua"] = {
+    config = { 'require"colorizer".setup()' },
     loaded = true,
     path = "/home/ares/.local/share/nvim/site/pack/packer/start/nvim-colorizer.lua"
   },
@@ -58,6 +59,7 @@ _G.packer_plugins = {
   },
   ["packer.nvim"] = {
     loaded = false,
+    needs_bufread = false,
     path = "/home/ares/.local/share/nvim/site/pack/packer/opt/packer.nvim"
   },
   ["plenary.nvim"] = {
@@ -69,8 +71,9 @@ _G.packer_plugins = {
     path = "/home/ares/.local/share/nvim/site/pack/packer/start/popup.nvim"
   },
   ["telescope-bibtex"] = {
-    config = { "\27LJ\1\2K\0\0\2\0\4\0\a4\0\0\0%\1\1\0>\0\2\0027\0\2\0%\1\3\0>\0\2\1G\0\1\0\vbibtex\19load_extension\14telescope\frequire\0" },
+    config = { 'require"telescope".load_extension("bibtex")' },
     loaded = false,
+    needs_bufread = false,
     path = "/home/ares/.local/share/nvim/site/pack/packer/opt/telescope-bibtex"
   },
   ["telescope.nvim"] = {
@@ -95,6 +98,8 @@ _G.packer_plugins = {
   }
 }
 
+-- Config for: nvim-colorizer.lua
+require"colorizer".setup()
 vim.cmd [[augroup packer_load_aucmds]]
 vim.cmd [[au!]]
   -- Filetype lazy-loads
