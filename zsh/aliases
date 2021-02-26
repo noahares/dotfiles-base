@@ -1,6 +1,6 @@
 alias v='nvim'
 alias vim='nvim'
-alias vrc='nvim ~/.config/nvim/init.vim'
+alias vrc='nvim ~/.config/nvim/init.lua'
 alias neomutt='cd ~/downloads && neomutt && polybar-msg hook mail 1' #this places attachments in downloads
 alias wget='wget --hsts-file="$XDG_CACHE_HOME/wget-hsts"'
 alias todo='todo.sh -d "$HOME/.config/todo/config"'
