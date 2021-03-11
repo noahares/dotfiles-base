@@ -16,9 +16,9 @@ return require('packer').startup(function(use)
   use {'morhetz/gruvbox'}
   use {'neovim/nvim-lspconfig'}
   use {'nvim-treesitter/nvim-treesitter'}
-  use {'nvim-lua/completion-nvim'}
   use {'nvim-lua/popup.nvim'}
   use {'nvim-lua/plenary.nvim'}
+  use {'hrsh7th/nvim-compe'}
   use {'nvim-telescope/telescope.nvim'}
   use {'SirVer/ultisnips'}
   use {'honza/vim-snippets'}

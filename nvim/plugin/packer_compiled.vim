@@ -32,10 +32,6 @@ local function try_loadstring(s, component, name)
 end
 
 _G.packer_plugins = {
-  ["completion-nvim"] = {
-    loaded = true,
-    path = "/home/ares/.local/share/nvim/site/pack/packer/start/completion-nvim"
-  },
   gruvbox = {
     loaded = true,
     path = "/home/ares/.local/share/nvim/site/pack/packer/start/gruvbox"
@@ -48,6 +44,10 @@ _G.packer_plugins = {
   ["nvim-commenter"] = {
     loaded = true,
     path = "/home/ares/.local/share/nvim/site/pack/packer/start/nvim-commenter"
+  },
+  ["nvim-compe"] = {
+    loaded = true,
+    path = "/home/ares/.local/share/nvim/site/pack/packer/start/nvim-compe"
   },
   ["nvim-lspconfig"] = {
     loaded = true,
