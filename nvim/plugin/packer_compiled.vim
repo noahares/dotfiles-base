@@ -53,6 +53,10 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/ares/.local/share/nvim/site/pack/packer/start/nvim-lspconfig"
   },
+  ["nvim-luadev"] = {
+    loaded = true,
+    path = "/home/ares/.local/share/nvim/site/pack/packer/start/nvim-luadev"
+  },
   ["nvim-treesitter"] = {
     loaded = true,
     path = "/home/ares/.local/share/nvim/site/pack/packer/start/nvim-treesitter"
@@ -103,6 +107,7 @@ require"colorizer".setup()
 vim.cmd [[augroup packer_load_aucmds]]
 vim.cmd [[au!]]
   -- Filetype lazy-loads
+vim.cmd [[au FileType markdown ++once lua require("packer.load")({'telescope-bibtex'}, { ft = "markdown" }, _G.packer_plugins)]]
 vim.cmd [[au FileType tex ++once lua require("packer.load")({'telescope-bibtex'}, { ft = "tex" }, _G.packer_plugins)]]
 vim.cmd("augroup END")
 END

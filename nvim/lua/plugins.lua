@@ -23,8 +23,9 @@ return require('packer').startup(function(use)
   use {'SirVer/ultisnips'}
   use {'honza/vim-snippets'}
   use {'norcalli/nvim-colorizer.lua', config = [[require"colorizer".setup()]]}
+  use {'bfredl/nvim-luadev'}
   use {'~/repos/nvim-commenter'}
-  use {'~/repos/telescope-bibtex', config = [[require"telescope".load_extension("bibtex")]], ft = 'tex'}
+  use {'~/repos/telescope-bibtex', config = [[require"telescope".load_extension("bibtex")]], ft = {'tex', 'markdown'}}
 end)
 
 --local plugins = setmetatable({}, {

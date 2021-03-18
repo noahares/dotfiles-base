@@ -2,11 +2,10 @@ local utils = require("utils")
 
 local custom_attach = function(client)
 	print("LSP started.");
-	require'completion'.on_attach(client)
 
   vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
     vim.lsp.diagnostic.on_publish_diagnostics, {
-      virtual_text = false,
+      virtual_text = true,
       update_in_insert = false,
     }
   )

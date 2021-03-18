@@ -8,7 +8,7 @@ end
 function Utils.noremap(type, key, value, opts)
   local options = {noremap = true}
   if opts then
-    vim.tbl_extend('force', options, opts)
+    options = vim.tbl_extend('force', options, opts)
   end
   vim.api.nvim_set_keymap(type,key,value, options)
 end
