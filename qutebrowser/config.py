@@ -145,3 +145,6 @@ config.bind('<space>', 'set-cmd-text :')
 # open or add bookmarks
 config.bind(',b', 'spawn bookmarks')
 config.bind(',B', 'set-cmd-text -s :spawn --userscript ~/repos/scripts/add_bookmark')
+
+# password insertion
+config.bind(',p', 'spawn --userscript qute-pass')

@@ -39,3 +39,4 @@ export FZF_DEFAULT_COMMAND='fd --type f --follow'
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 export KITCAR_REPO_PATH=$HOME/kitcar
 export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01'
+export SUDO_ASKPASS=$HOME/repos/scripts/dpass.sh

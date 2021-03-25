@@ -21,7 +21,7 @@ require'compe'.setup {
     ultisnips = {menu = '[SPT]'};
     nvim_lsp = {menu = '[LSP]'};
     nvim_lua = {menu = '[LUA]'};
-    spell = true;
+    --spell = true;
     --tags = true;
     --snippets_nvim = true;
     treesitter = true;

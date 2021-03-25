@@ -30,7 +30,7 @@ if [ -d /etc/X11/xinit/xinitrc.d ] ; then
     unset f
 fi
 
-setxkbmap -layout de
+setxkbmap -layout us -variant altgr-intl
 sxhkd &
 easystroke --config-dir $XDG_CONFIG_HOME/easystroke/ enable &
 unclutter &
@@ -41,4 +41,5 @@ mpd &
 xrdb -load $XDG_CONFIG_HOME/X11/xresources
 eval $(/usr/bin/gnome-keyring-daemon --start --components=pkcs11,secrets,ssh)
 export SSH_AUTH_SOCK GNOME_KEYRING_CONTROL GNOME_KEYRING_PID
+export SUDO_ASKPASS=$HOME/repos/scripts/dpass.sh
 exec bspwm
