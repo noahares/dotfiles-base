@@ -93,6 +93,12 @@ width = 30%
 offset-x = 60%
 modules-right = weather mail memory cpu eth date
 
+[bar/state-focus]
+inherit = bar/base
+width = 17%
+offset-x = 80%
+modules-right = memory cpu eth date
+
 [bar/laptop-state]
 inherit = bar/state
 width = 35%
