@@ -47,7 +47,31 @@ end
 local nvim_lsp = require'lspconfig'
 nvim_lsp.clangd.setup{on_attach=custom_attach}
 nvim_lsp.bashls.setup{on_attach=custom_attach}
-nvim_lsp.texlab.setup{on_attach=custom_attach}
+nvim_lsp.texlab.setup{
+  on_attach=custom_attach,
+  cmd = {'texlab'},
+  --name = "texlab_fancy";
+  log_level = vim.lsp.protocol.MessageType.Log;
+  settings = {
+    latex = {
+      build = {
+        args = {
+          '-pdf',
+          '-interaction=nonstopmode',
+          '--shell-escape',
+          '-synctex=1',
+          '-output-directory=build',
+          '-lualatex',
+          '%f',
+        },
+        onSave = true,
+        outputDirectory = './build',
+        executable = 'latexmk',
+      },
+      rootDirectory = '.',
+    }
+  }
+}
 nvim_lsp.pyls.setup{on_attach=custom_attach}
 nvim_lsp.tsserver.setup{on_attach=custom_attach}
 nvim_lsp.sumneko_lua.setup{
