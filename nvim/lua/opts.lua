@@ -1,40 +1,39 @@
 local g = vim.g
-local o = vim.o
-local utils = require('utils')
+local opt = vim.opt
 
 g.mapleader = ','
 g.tex_flavor = "latex"
 
-utils.opt('w', 'number', true)
-utils.opt('w', 'relativenumber', true)
+opt.number = true
+opt.relativenumber = true
 -- faster macros
-utils.opt('o', 'lazyredraw', true)
+opt.lazyredraw = true
 -- matching parenthesis
-utils.opt('o', 'showmatch', true)
+opt.showmatch = true
 -- switch buffer without saving them
-utils.opt('o', 'hidden', true)
+opt.hidden = true
 -- better searching
-utils.opt('o', 'ignorecase', true)
-utils.opt('o', 'smartcase', true)
-utils.opt('o', 'hlsearch', false)
+opt.ignorecase = true
+opt.smartcase = true
+opt.hlsearch = true
 
 -- show lines bellow cursor
-utils.opt('o', 'scrolloff', 5)
-utils.opt('o', 'sidescrolloff', 5)
+opt.scrolloff = 5
+opt.sidescrolloff = 5
 
 -- tab config
-utils.opt('b', 'expandtab', true)
-utils.opt('b', 'shiftwidth', 2)
-utils.opt('b', 'tabstop', 2)
-utils.opt('b', 'softtabstop', 2)
+opt.expandtab = true
+opt.shiftwidth = 2
+opt.tabstop = 2
+opt.softtabstop = 2
 
 -- split in reasonable positions
-utils.opt('o', 'splitright', true)
-utils.opt('o', 'splitbelow', true)
+opt.splitright = true
+opt.splitbelow = true
 
 --folds
-utils.opt('w', 'foldmethod', 'expr')
-utils.opt('w', 'foldexpr', 'nvim_treesitter#foldexpr()')
-utils.opt('o', 'foldlevelstart', 99)
+opt.foldmethod = 'expr'
+opt.foldexpr = 'nvim_treesitter#foldexpr()'
+opt.foldlevelstart = 99
 
-o.formatoptions = o.formatoptions:gsub("r", ""):gsub("o", "")
+opt.formatoptions:remove {'r', 'o'}
