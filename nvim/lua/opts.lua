@@ -15,7 +15,7 @@ opt.hidden = true
 -- better searching
 opt.ignorecase = true
 opt.smartcase = true
-opt.hlsearch = true
+opt.hlsearch = false
 
 -- show lines bellow cursor
 opt.scrolloff = 5

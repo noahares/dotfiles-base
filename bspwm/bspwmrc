@@ -40,10 +40,7 @@ bspc config merge_overlapping_monitors true
 bspc config focus_follows_pointer true
 
 bspc rule -a Gimp state=floating follow=on
-#bspc rule -a firefox desktop=2
-bspc rule -a Steam desktop=5
 bspc rule -a Lutris desktop=5
-#bspc rule -a Zathura state=tiled
 bspc rule -a calc state=floating sticky=on
 bspc rule -a mpv state=floating
 bspc rule -a TelegramDesktop state=floating

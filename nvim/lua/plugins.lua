@@ -1,14 +1,5 @@
 vim.cmd [[packadd packer.nvim]]
 
---local packer = nil
---local function init()
---  if packer == nil then
---    packer = require('packer')
---    packer.init()
---  end
---
---  local use = packer.use
---  packer.reset()
 return require('packer').startup(function(use)
   use {'wbthomason/packer.nvim', opt = true}
   use {'tpope/vim-fugitive'}
@@ -16,10 +7,11 @@ return require('packer').startup(function(use)
   use {'morhetz/gruvbox'}
   use {'neovim/nvim-lspconfig'}
   use {'nvim-treesitter/nvim-treesitter'}
-  use {'nvim-lua/popup.nvim'}
-  use {'nvim-lua/plenary.nvim'}
   use {'hrsh7th/nvim-compe'}
-  use {'nvim-telescope/telescope.nvim'}
+  use {
+    'nvim-telescope/telescope.nvim',
+    requires = {{'nvim-lua/popup.nvim'}, {'nvim-lua/plenary.nvim'}}
+  }
   use {'SirVer/ultisnips'}
   use {'honza/vim-snippets'}
   use {'norcalli/nvim-colorizer.lua', config = [[require"colorizer".setup()]]}
@@ -31,12 +23,3 @@ return require('packer').startup(function(use)
   }
   use {'vimwiki/vimwiki'}
 end)
-
---local plugins = setmetatable({}, {
---  __index = function(_, key)
---    init()
---    return packer[key]
---  end
---})
---
---return plugins

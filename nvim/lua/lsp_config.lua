@@ -72,7 +72,7 @@ nvim_lsp.texlab.setup{
     }
   }
 }
-nvim_lsp.pyls.setup{on_attach=custom_attach}
+nvim_lsp.pylsp.setup{on_attach=custom_attach}
 nvim_lsp.tsserver.setup{on_attach=custom_attach}
 nvim_lsp.sumneko_lua.setup{
   cmd = {'lua-language-server'},
