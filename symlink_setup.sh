@@ -10,6 +10,7 @@ rm -r ~/.config/nvim
 rm -r ~/.config/bspwm
 rm -r ~/.config/zsh
 rm -r ~/.config/fontconfig
+rm -r ~/.config/paru
 [ ! -d ~/.config/qutebrower ] && mkdir ~/.config/qutebrowser
 [ ! -d ~/.config/vifm ] && mkdir ~/.config/vifm
 [ ! -d ~/.config/X11 ] && mkdir ~/.config/X11
@@ -29,3 +30,4 @@ ln -s ~/dotfiles-base/zsh ~/.config/zsh
 ln -s ~/dotfiles-base/user-dirs.dirs ~/.config/user-dirs.dirs
 ln -s ~/dotfiles-base/xinitrc ~/.config/X11/xinitrc
 ln -s ~/dotfiles-base/fontconfig ~/.config/fontconfig
+ln -s ~/dotfiles-base/paru ~/.config/paru

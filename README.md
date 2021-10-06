@@ -19,3 +19,4 @@ make the symlink\_setup script executable and run it.
 * zathura
 * zsh
 * polybar
+* paru
