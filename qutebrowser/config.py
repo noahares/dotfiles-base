@@ -140,7 +140,7 @@ config.bind('t', 'set-cmd-text -s :open -t')
 config.set('auto_save.session', True)
 
 # space opens cmd prompt
-config.bind('<space>', 'set-cmd-text :')
+# config.bind('<space>', 'set-cmd-text :')
 
 # open or add bookmarks
 config.bind(',b', 'spawn bookmarks')

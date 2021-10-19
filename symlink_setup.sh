@@ -11,9 +11,9 @@ rm -r ~/.config/bspwm
 rm -r ~/.config/zsh
 rm -r ~/.config/fontconfig
 rm -r ~/.config/paru
+rm -r ~/.config/X11
 [ ! -d ~/.config/qutebrower ] && mkdir ~/.config/qutebrowser
 [ ! -d ~/.config/vifm ] && mkdir ~/.config/vifm
-[ ! -d ~/.config/X11 ] && mkdir ~/.config/X11
 
 ln -s ~/dotfiles-base/zathura ~/.config/zathura
 ln -s ~/dotfiles-base/dunst ~/.config/dunst
@@ -28,6 +28,6 @@ ln -s ~/dotfiles-base/qutebrowser/config.py ~/.config/qutebrowser/config.py
 ln -s ~/dotfiles-base/zsh/.zshenv ~/.zshenv
 ln -s ~/dotfiles-base/zsh ~/.config/zsh
 ln -s ~/dotfiles-base/user-dirs.dirs ~/.config/user-dirs.dirs
-ln -s ~/dotfiles-base/xinitrc ~/.config/X11/xinitrc
+ln -s ~/dotfiles-base/X11 ~/.config/X11
 ln -s ~/dotfiles-base/fontconfig ~/.config/fontconfig
 ln -s ~/dotfiles-base/paru ~/.config/paru

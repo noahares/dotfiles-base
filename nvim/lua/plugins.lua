@@ -3,7 +3,7 @@ vim.cmd [[packadd packer.nvim]]
 return require('packer').startup(function(use)
   use {'wbthomason/packer.nvim', opt = true}
   use {'tpope/vim-fugitive'}
-  use {'dylanaraps/wal.vim'}
+  --use {'dylanaraps/wal.vim'}
   use {'morhetz/gruvbox'}
   use {'neovim/nvim-lspconfig'}
   use {'nvim-treesitter/nvim-treesitter'}
@@ -22,4 +22,8 @@ return require('packer').startup(function(use)
     ft = {'tex', 'markdown'}
   }
   use {'vimwiki/vimwiki'}
+  use {'ElPiloto/telescope-vimwiki.nvim',
+    config = [[require"telescope".load_extension("vimwiki")]]
+  }
+  --use {'kyazdani42/nvim-web-devicons'}
 end)

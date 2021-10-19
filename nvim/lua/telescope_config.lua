@@ -59,3 +59,6 @@ utils.nnoremap('<leader>ch', '<cmd>Telescope command_history<cr>')
 utils.nnoremap('<leader>f', '<cmd>Telescope live_grep<cr>')
 utils.nnoremap('<leader>z', '<cmd>Telescope spell_suggest<cr>')
 utils.noremap('','<F1>', '<cmd>Telescope help_tags<cr>')
+
+utils.nnoremap('<leader>vw', '<cmd>Telescope vimwiki<cr>')
+utils.nnoremap('<leader>vg', '<cmd>Telescope vimwiki live_grep<cr>')
