@@ -12,6 +12,7 @@ rm -r ~/.config/zsh
 rm -r ~/.config/fontconfig
 rm -r ~/.config/paru
 rm -r ~/.config/X11
+rm -r ~/.config/rofi
 [ ! -d ~/.config/qutebrower ] && mkdir ~/.config/qutebrowser
 [ ! -d ~/.config/vifm ] && mkdir ~/.config/vifm
 
@@ -31,3 +32,4 @@ ln -s ~/dotfiles-base/user-dirs.dirs ~/.config/user-dirs.dirs
 ln -s ~/dotfiles-base/X11 ~/.config/X11
 ln -s ~/dotfiles-base/fontconfig ~/.config/fontconfig
 ln -s ~/dotfiles-base/paru ~/.config/paru
+ln -s ~/dotfiles-base/rofi ~/.config/rofi
