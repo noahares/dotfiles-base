@@ -43,11 +43,19 @@ local function get_lua_runtime()
     return result
 end
 
+local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
 -- setup all lsp servers here
 local nvim_lsp = require'lspconfig'
-nvim_lsp.clangd.setup{on_attach=custom_attach}
-nvim_lsp.bashls.setup{on_attach=custom_attach}
+nvim_lsp.clangd.setup{
+  capabilities = capabilities,
+  on_attach=custom_attach
+}
+nvim_lsp.bashls.setup{
+  capabilities = capabilities,
+  on_attach=custom_attach
+}
 nvim_lsp.texlab.setup{
+  capabilities = capabilities,
   on_attach=custom_attach,
   cmd = {'texlab'},
   --name = "texlab_fancy";
@@ -72,9 +80,16 @@ nvim_lsp.texlab.setup{
     }
   }
 }
-nvim_lsp.pylsp.setup{on_attach=custom_attach}
-nvim_lsp.tsserver.setup{on_attach=custom_attach}
+nvim_lsp.pylsp.setup{
+  capabilities = capabilities,
+  on_attach=custom_attach
+}
+nvim_lsp.tsserver.setup{
+  capabilities = capabilities,
+  on_attach=custom_attach
+}
 nvim_lsp.sumneko_lua.setup{
+  capabilities = capabilities,
   cmd = {'lua-language-server'},
   on_attach=custom_attach,
   settings = {
