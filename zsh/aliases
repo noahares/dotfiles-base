@@ -17,7 +17,8 @@ alias la='ls -A'
 alias l='ls -CF'
 
 
-ff () { find ~/dotfiles* -maxdepth 3 -type f -follow -print | fzf --preview 'bat --color=always {}' | xargs -o -r $EDITOR; }
+ff () { find ~/dotfiles* -not -path '*/\.git/*' -type f -follow -print | fzf --preview 'bat --color=always {}' | xargs -o -r $EDITOR; }
+fr () { find ~/repos -not -path '*/\.git/*' -type f -follow -print | fzf --preview 'bat --color=always {}' | xargs -o -r $EDITOR; }
 uni () { find ~/documents/studium ~/Archive/studium -name "*.pdf" -follow -print | fzf | xargs -I {} -r $VIEWER --fork "{}"; }
 ur () { find ~/documents/uni_repos -name "*.tex" -follow -print | fzf | xargs -o -r $EDITOR; }
 of () { cd; fd -t f -E Games | fzf | xargs -o -r $EDITOR; }
