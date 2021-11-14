@@ -48,7 +48,8 @@ local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protoco
 local nvim_lsp = require'lspconfig'
 nvim_lsp.clangd.setup{
   capabilities = capabilities,
-  on_attach=custom_attach
+  on_attach=custom_attach,
+  filetypes = {"c", "cpp", "objc", "objcpp", "hpp"}
 }
 nvim_lsp.bashls.setup{
   capabilities = capabilities,
