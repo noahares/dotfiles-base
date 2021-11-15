@@ -32,5 +32,5 @@ return require('packer').startup(function(use)
   use {'ElPiloto/telescope-vimwiki.nvim',
     config = [[require"telescope".load_extension("vimwiki")]]
   }
-  --use {'kyazdani42/nvim-web-devicons'}
+  use {'kyazdani42/nvim-web-devicons'}
 end)
