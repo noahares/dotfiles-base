@@ -138,6 +138,8 @@ super + {Left,Down,Up,Right}
 # XF86
 #
 
+XF86AudioMicMute
+    amixer -D pulse set Capture toggle; polybar-msg hook mic 1
 XF86AudioMute
     amixer -D pulse sset Master toggle;
 XF86Audio{Raise,Lower}Volume
@@ -156,6 +158,12 @@ XF86Calculator
 
 XF86Tools
     output_switch.sh; polybar-msg hook audio_out 1
+
+XF86MonBrightnessUp
+    brightness.sh +
+
+XF86MonBrightnessDown
+    brightness.sh -
 
 super + F1
     md2pdf.sh $HOME/Nextcloud/wiki/linux/command_helper.md /tmp/helper && zathura --fork /tmp/helper/*.pdf

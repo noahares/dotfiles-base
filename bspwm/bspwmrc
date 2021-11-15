@@ -6,6 +6,7 @@ if [[ $(hostname) == 'arch2' ]]; then
     primary=$(bspc query --monitors --names | head -n 1)
     secondary=$(bspc query --monitors --names | grep -v $primary | head -n 1)
     xrandr --output HDMI1 --auto --right-of $primary
+    xrandr --output $primary --brightness $(head -n1 $XDG_DATA_HOME/brightness)
     if [[ $secondary ]]; then
         bspc monitor $primary -d 1 2 3 4 5
         bspc monitor $secondary -d 6 7 8 9 10
