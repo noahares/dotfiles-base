@@ -14,7 +14,7 @@
 config.load_autoconfig()
 
 # Dark Mode
-# config.set("colors.webpage.darkmode.enabled", True)
+config.set("colors.webpage.darkmode.enabled", True)
 
 # Which cookies to accept. With QtWebEngine, this setting also controls
 # other features with tracking capabilities similar to those of cookies;
@@ -124,6 +124,9 @@ config.set('content.javascript.enabled', True, 'qute://*/*')
 
 # Enable Rust Adblock
 config.set('content.blocking.method', 'adblock')
+
+# Enable copy to clipboard
+config.set('content.javascript.can_access_clipboard', True)
 
 config.bind(',v', 'spawn mpv {url}')
 config.bind(',V', 'hint links spawn mpv {hint-url}')
