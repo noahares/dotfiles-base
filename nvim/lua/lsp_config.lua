@@ -10,7 +10,7 @@ local custom_attach = function(client)
     }
   )
   -- automatic diagnostics popup
-  vim.api.nvim_command('autocmd CursorHold <buffer> lua vim.diagnostic.open_float(0, {{focusable = false}, scope="line"})')
+  vim.api.nvim_command('autocmd CursorHold <buffer> lua vim.diagnostic.open_float(0, {scope="line"})')
   -- speedup diagnostics popup
   vim.o.updatetime=1000
 
