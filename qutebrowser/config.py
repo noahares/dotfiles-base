@@ -151,3 +151,12 @@ config.bind(',B', 'set-cmd-text -s :spawn --userscript ~/repos/scripts/add_bookm
 
 # password insertion
 config.bind(',p', 'spawn --userscript qute-pass')
+
+config.set('editor.command', ["nvim", "-f", "{file}", "-c", "normal {line}G{column0}l"])
+
+config.set('fileselect.folder.command', ["st", "-e", "vifm", "--choose-dir={}"])
+config.set('fileselect.handler', 'external')
+config.set('fileselect.single_file.command', ["bspwmfloat.sh", "st", "-e", "vifm", "--choose-file={}"])
+config.set('fileselect.multiple_files.command', ["bspwmfloat.sh", "st", "-e", "vifm", "--choose-files={}"])
+
+config.bind(',d', 'set-cmd-text -s :spawn --userscript ~/repos/scripts/vifmdownload.sh')
