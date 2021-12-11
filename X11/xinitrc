@@ -34,7 +34,7 @@ setxkbmap -layout us -variant altgr-intl
 sxhkd &
 easystroke --config-dir $XDG_CONFIG_HOME/easystroke/ enable &
 unclutter &
-picom -f --experimental-backends &
+picom -f &
 dunst &
 mpd &
 

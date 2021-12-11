@@ -175,4 +175,4 @@ super + F1
 #
 
 Print
-    scrot -s ~/pictures/screenshots/$(date '+%Y%m%d-%H-%M-%S').png
+    scrot -s -l opacity=0 -e 'xclip -selection clipboard -t image/png -i $f' ~/pictures/screenshots/$(date '+%Y%m%d-%H-%M-%S').png
