@@ -24,6 +24,12 @@ foreground-alt = ${xrdb:color8:#222}
 primary = ${xrdb:color5:#222}
 secondary = ${xrdb:color2:#222}
 alert = ${xrdb:color1:#222}
+red = ${xrdb:color1:#222}
+blue = ${xrdb:color4:#222}
+green = ${xrdb:color2:#222}
+yellow = ${xrdb:color3:#222}
+magenta = ${xrdb:color5:#222}
+cyan = ${xrdb:color6:#222}
 
 [bar/base]
 monitor = ${env:MONITOR:}
@@ -44,20 +50,21 @@ line-color = #f00
 border-size = 4
 border-color = #00000000
 
-padding-left = 1
-padding-right = 2
+padding-left = 0
+padding-right = 0
 
 override-redirect = true
 
-module-margin-left = 1
-module-margin-right = 2
+module-margin-left = 0
+module-margin-right = 0
 
 font-0 = Anonymous Pro:pixelsize=9;1
 font-1 = FontAwesome:pixelsize=10;1
+font-2 = FontAwesome:pixelsize=36;8
 ; font-1 = unifont:fontformat=truetype:size=8:antialias=false;0
 ; font-2 = siji:pixelsize=10;1
 
-separator = |
+separator = ""
 
 ;tray-background = #0063ff
 
@@ -80,12 +87,19 @@ inherit = bar/base
 width = 21%
 modules-left = bspwm xwindow
 
+[bar/wm-single]
+inherit = bar/base
+width = 27%
+modules-left = bspwm xwindow
+
 [bar/media]
 inherit = bar/base
 width = 25%
 offset-x = 28%
 modules-left = pulseaudio mpd
 modules-right = mic
+padding-left = 1
+padding-right = 2
 
 [bar/state]
 inherit = bar/base
@@ -100,11 +114,11 @@ offset-x = 80%
 modules-right = memory cpu eth date
 
 [bar/laptop-state]
-inherit = bar/state
-width = 35%
-offset-x = 45%
+inherit = bar/base
+width = 40%
+offset-x = 54%
 
-modules-left = weather mail memory cpu wlan temperature battery date
+modules-left = arrow5 padding5 weather padding5 arrow3 padding3 mail padding3 arrow4 padding4 memory padding4 cpu padding4 temperature padding4 arrow6 padding6 network padding6 arrow0 padding0 battery padding0 date
 
 [bar/tray]
 inherit = bar/base
@@ -117,6 +131,71 @@ modules-left = empty
 [module/empty]
 type = custom/ipc
 hook-0 = echo ""
+
+[module/arrow0]
+; background to trans
+type = custom/text
+content = ""
+content-font = 3
+content-foreground = ${colors.background}
+content-background = ${colors.cyan}
+
+[module/padding0]
+type = custom/text
+content = "  "
+content-background = ${colors.background}
+
+[module/arrow3]
+; background to trans
+type = custom/text
+content = ""
+content-font = 3
+content-foreground = ${colors.yellow}
+content-background = ${colors.magenta}
+
+[module/padding3]
+type = custom/text
+content = "  "
+content-background = ${colors.yellow}
+
+[module/arrow4]
+; background to trans
+type = custom/text
+content = ""
+content-font = 3
+content-foreground = ${colors.blue}
+content-background = ${colors.yellow}
+
+[module/padding4]
+type = custom/text
+content = "  "
+content-background = ${colors.blue}
+
+[module/arrow5]
+; background to trans
+type = custom/text
+content = ""
+content-font = 3
+content-foreground = ${colors.magenta}
+content-background = #00000000
+
+[module/padding5]
+type = custom/text
+content = "  "
+content-background = ${colors.magenta}
+
+[module/arrow6]
+; background to trans
+type = custom/text
+content = ""
+content-font = 3
+content-foreground = ${colors.cyan}
+content-background = ${colors.blue}
+
+[module/padding6]
+type = custom/text
+content = "  "
+content-background = ${colors.cyan}
 
 [module/audio_out]
 type = custom/ipc
@@ -136,6 +215,7 @@ hook-0 = mailbox
 initial = 1
 click-left = $TERMINAL -e bash -ic neomutt
 click-right = mailsync.sh
+format-background = ${colors.yellow}
 
 [module/weather]
 type = custom/ipc
@@ -143,6 +223,7 @@ hook-0 = weather
 initial = 1
 click-left = $TERMINAL -e less -Srf "$XDG_DATA_HOME/weatherreport"
 click-right = polybar-msg hook weather 1
+format-background = ${colors.magenta}
 
 [module/xwindow]
 type = internal/xwindow
@@ -197,6 +278,7 @@ format-prefix = " "
 format-prefix-foreground = ${colors.foreground}
 ;format-underline = #f90000
 label = %percentage:2%%
+format-background = ${colors.blue}
 
 [module/memory]
 type = internal/memory
@@ -204,15 +286,19 @@ interval = 5
 format-prefix = " "
 ;format-underline = #4bffdc
 label = %percentage_used%%
+format-background = ${colors.blue}
 
-[module/wlan]
+[module/network]
 type = internal/network
 interface = wlp2s0
 interval = 3.0
+format-connected-background = ${colors.cyan}
+format-disconnected-background = ${colors.cyan}
 
 format-connected = <ramp-signal> <label-connected>
 ;format-connected-underline = #9f78e1
 label-connected = %signal%%
+;label-connected = %signal%%%downspeed:9%
 
 format-disconnected = <label-disconnected>
 ;format-disconnected-underline = ${self.format-connected-underline}
@@ -222,9 +308,10 @@ label-disconnected-foreground = #f00
 ramp-signal-0 = 
 ramp-signal-1 = 
 ramp-signal-2 = 
-ramp-signal-0-foreground = #f00
-ramp-signal-1-foreground = #d70
-ramp-signal-2-foreground = #0f0
+; ramp-signal-0-foreground = #f00
+; ramp-signal-1-foreground = #d70
+; ramp-signal-2-foreground = #0f0
+; format-disconnected-background = ${colors.cyan}
 
 [module/date]
 type = internal/date
@@ -272,8 +359,10 @@ bar-volume-empty-foreground = ${colors.foreground-alt}
 
 [module/temperature]
 type = internal/temperature
+hwmon-path = /sys/devices/platform/coretemp.0/hwmon/hwmon5/temp1_input
 thermal-zone = 0
 warn-temperature = 80
+format-background = ${colors.blue}
 
 format = <ramp> <label>
 ;format-underline = #f50a4d
@@ -287,8 +376,8 @@ label-warn-foreground = #f00
 ramp-0 = 
 ramp-1 = 
 ramp-2 = 
-ramp-0-foreground = #b70
-ramp-1-foreground = #d70
+; ramp-0-foreground = #b70
+; ramp-1-foreground = #d70
 ramp-2-foreground = #f00
 
 [module/eth]
@@ -326,33 +415,39 @@ click-left = $HOME/.config/rofi/bin/applet_powermenu &
 [module/battery]
 type = internal/battery
 battery = BAT0
-adapter = ADP1
+adapter = AC
 full-at = 98
 
 format-charging = <animation-charging> <label-charging>
 ;format-charging-underline = #ffb52a
 
-format-discharging = <animation-discharging> <label-discharging>
-format-discharging-underline = ${self.format-charging-underline}
+format-discharging = <ramp-capacity> <label-discharging>
+;format-discharging-underline = ${self.format-charging-underline}
 
 format-full-prefix = " "
 format-full-prefix-foreground = ${colors.foreground-alt}
-format-full-underline = ${self.format-charging-underline}
+;format-full-underline = ${self.format-charging-underline}
 
-ramp-capacity-0 = 
-ramp-capacity-1 = 
-ramp-capacity-2 = 
+ramp-capacity-0 = 
+ramp-capacity-1 = 
+ramp-capacity-2 = 
+ramp-capacity-3 = 
+ramp-capacity-4 = 
 ramp-capacity-foreground = ${colors.foreground-alt}
 
-animation-charging-0 = 
-animation-charging-1 = 
-animation-charging-2 = 
+animation-charging-0 = 
+animation-charging-1 = 
+animation-charging-2 = 
+animation-charging-3 = 
+animation-charging-4 = 
 animation-charging-foreground = ${colors.foreground-alt}
 animation-charging-framerate = 750
 
-animation-discharging-0 = 
-animation-discharging-1 = 
-animation-discharging-2 = 
+animation-discharging-0 = 
+animation-discharging-1 = 
+animation-discharging-2 = 
+animation-discharging-3 = 
+animation-discharging-4 = 
 animation-discharging-foreground = ${colors.foreground-alt}
 animation-discharging-framerate = 750
 
