@@ -45,8 +45,6 @@ require('telescope').setup{
   extensions = {
     bibtex = {
       depth = 1,
-      format = 'tex',
-      --search_keys = {"label", "author", "publisher", "year"}
     },
   }
 }

@@ -37,3 +37,5 @@ opt.foldexpr = 'nvim_treesitter#foldexpr()'
 opt.foldlevelstart = 99
 
 opt.formatoptions:remove {'r', 'o'}
+
+opt.clipboard:append {'unnamedplus'}
