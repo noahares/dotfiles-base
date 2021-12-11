@@ -28,7 +28,7 @@ return require('packer').startup(function(use)
     config = [[require"telescope".load_extension("bibtex")]],
     ft = {'tex', 'markdown'}
   }
-  use {'vimwiki/vimwiki'}
+  use {'vimwiki/vimwiki', branch = 'dev'}
   use {'ElPiloto/telescope-vimwiki.nvim',
     config = [[require"telescope".load_extension("vimwiki")]]
   }
