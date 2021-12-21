@@ -34,9 +34,10 @@ setxkbmap -layout us -variant altgr-intl
 sxhkd &
 easystroke --config-dir $XDG_CONFIG_HOME/easystroke/ enable &
 unclutter &
-picom -f &
+# picom -f &
 dunst &
 mpd &
+xsetroot -cursor_name left_ptr
 
 xrdb -load $XDG_CONFIG_HOME/X11/xresources
 eval $(/usr/bin/gnome-keyring-daemon --start --components=pkcs11,secrets,ssh)

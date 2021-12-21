@@ -23,6 +23,7 @@ setbg.sh
 launch_polybar.sh &
 nextcloud --background &
 messengers.sh &
+xsnow -nomenu &
 #mycroft-start all &
 
 bspc config border_width         1
@@ -45,5 +46,6 @@ bspc rule -a Lutris desktop=5
 bspc rule -a calc state=floating sticky=on
 bspc rule -a mpv state=floating
 bspc rule -a TelegramDesktop state=floating
+bspc rule -a Signal state=floating
 bspc rule -a Zulip state=floating
 bspc rule -a Slack state=floating
