@@ -150,7 +150,7 @@ config.bind(',b', 'spawn bookmarks')
 config.bind(',B', 'set-cmd-text -s :spawn --userscript ~/repos/scripts/add_bookmark')
 
 # password insertion
-config.bind(',p', 'spawn --userscript qute-pass')
+config.bind(',p', 'spawn --userscript qute-bitwarden')
 
 config.set('editor.command', ["nvim", "-f", "{file}", "-c", "normal {line}G{column0}l"])
 
