@@ -1,7 +1,7 @@
 local g = vim.g
 
 g.vimwiki_list = {{
-  path = '~/Nextcloud/vimwiki/',
+  path = '~/Seafile/vimwiki/',
   syntax = 'markdown',
   ext = '.md',
   links_space_char = '_'
