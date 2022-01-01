@@ -17,6 +17,9 @@ opt.ignorecase = true
 opt.smartcase = true
 opt.hlsearch = false
 
+--Save undo history
+vim.opt.undofile = true
+
 -- show lines bellow cursor
 opt.scrolloff = 5
 opt.sidescrolloff = 5

@@ -75,8 +75,14 @@ nvim_lsp.texlab.setup{
           '%f',
         },
         onSave = true,
+        forwardSearchAfter = true,
         outputDirectory = './build',
         executable = 'latexmk',
+      },
+      forwardSearch = {
+        executable = 'zathura',
+        args = { '--synctex-forward', '%l:1:%f', '%p' },
+        onSave = true,
       },
       rootDirectory = '.',
     }
