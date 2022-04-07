@@ -15,12 +15,12 @@ cmp.setup{
     ['<C-y>'] = cmp.mapping.confirm({ select = true }),
   },
   sources = cmp.config.sources{
+    { name = 'buffer', keyword_length = 4 },
     { name = 'nvim_lua' },
     { name = 'nvim_lsp' },
     { name = 'path' },
     -- { name = 'luasnip' }, -- For luasnip users.
     { name = 'ultisnips' },
-    { name = 'buffer', keyword_length = 5 },
   },
   formatting = {
   format = require("lspkind").cmp_format({with_text = true, menu = ({

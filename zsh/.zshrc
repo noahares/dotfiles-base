@@ -70,3 +70,15 @@ source $ZDOTDIR/aliases
 source /usr/share/fzf/key-bindings.zsh
 source /usr/share/fzf/completion.zsh
 [[ -r "/usr/share/z/z.sh" ]] && source /usr/share/z/z.sh
+
+function preexec() {
+  timer=${timer:-$SECONDS}
+}
+
+function precmd() {
+  if [ $timer ]; then
+    timer_show=$(($SECONDS - $timer))
+    export RPROMPT="%F{cyan}${timer_show}s %{$reset_color%}"
+    unset timer
+  fi
+}

@@ -4,6 +4,8 @@ local opt = vim.opt
 g.mapleader = ','
 g.tex_flavor = "latex"
 
+opt.switchbuf = "usetab"
+
 opt.number = true
 opt.relativenumber = true
 -- faster macros

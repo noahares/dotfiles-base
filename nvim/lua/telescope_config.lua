@@ -42,6 +42,12 @@ require('telescope').setup{
     -- Developer configurations: Not meant for general override
     buffer_previewer_maker = require'telescope.previewers'.buffer_previewer_maker
   },
+  pickers = {
+    buffers = {
+      ignore_current_buffer = true,
+      sort_mru = true,
+    },
+  },
   extensions = {
     bibtex = {
       depth = 1,

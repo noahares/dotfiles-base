@@ -12,7 +12,8 @@ alias ls='ls --color=auto --group-directories-first'
 alias grep='grep --color=auto'
 alias fgrep='fgrep --color=auto'
 alias egrep='egrep --color=auto'
-alias ll='ls -alhFA'
+alias ll='exa -lagb --group-directories-first'
+# alias ll='ls -alhFA'
 alias la='ls -A'
 alias l='ls -CF'
 
@@ -30,3 +31,4 @@ timer () {
     done
     notify-send "$1 second timer completed."
 }
+up () { cd $(printf "%0.s../" $(seq 1 $1)); }

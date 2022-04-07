@@ -44,13 +44,14 @@ local function get_lua_runtime()
     return result
 end
 
+vim.lsp.set_log_level("debug")
 local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
 -- setup all lsp servers here
 local nvim_lsp = require'lspconfig'
 nvim_lsp.clangd.setup{
   capabilities = capabilities,
   on_attach=custom_attach,
-  filetypes = {"c", "cpp", "objc", "objcpp", "hpp"}
+  filetypes = {"c", "cpp", "objc", "objcpp", "hpp", "h"}
 }
 nvim_lsp.bashls.setup{
   capabilities = capabilities,
@@ -61,9 +62,9 @@ nvim_lsp.texlab.setup{
   on_attach=custom_attach,
   cmd = {'texlab'},
   --name = "texlab_fancy";
-  log_level = vim.lsp.protocol.MessageType.Log;
   settings = {
     latex = {
+      rootDirectory = '.',
       build = {
         args = {
           '-pdf',
@@ -72,6 +73,7 @@ nvim_lsp.texlab.setup{
           '-synctex=1',
           '-output-directory=build',
           '-lualatex',
+          '-pvc',
           '%f',
         },
         onSave = true,
@@ -81,10 +83,12 @@ nvim_lsp.texlab.setup{
       },
       forwardSearch = {
         executable = 'zathura',
-        args = { '--synctex-forward', '%l:1:%f', '%p' },
+        args = {
+          '--synctex-forward',
+          '%l:1:%f',
+          '%p' },
         onSave = true,
       },
-      rootDirectory = '.',
     }
   }
 }
@@ -119,4 +123,8 @@ nvim_lsp.sumneko_lua.setup{
       }
     }
   }
+}
+nvim_lsp.cmake.setup{
+  capabilities = capabilities,
+  on_attach=custom_attach
 }

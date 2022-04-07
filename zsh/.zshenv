@@ -2,9 +2,10 @@ PATH=$PATH:$HOME/privateProjects/mycroft-core/bin
 PATH=$PATH:$HOME/.local/bin
 PATH=$PATH:$HOME/repos/scripts
 PATH=$PATH:$HOME/repos/scripts/yeelight
+PATH=$PATH:$HOME/.config/rofi/bin
 export EDITOR="nvim"
 export TERMINAL="st"
-export BROWSER="qutebrowser"
+export BROWSER="firefox"
 export VIEWER="zathura"
 export MANPAGER='nvim +Man!'
 export XDG_CONFIG_HOME=$HOME/.config
@@ -42,3 +43,4 @@ export KITCAR_REPO_PATH=$HOME/kitcar
 export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01'
 export SUDO_ASKPASS=$HOME/repos/scripts/dpass.sh
 export DIFFPROG="nvim -d $1"
+export AMD_VULKAN_ICD=RADV
