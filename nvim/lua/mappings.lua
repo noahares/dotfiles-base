@@ -25,13 +25,9 @@ utils.noremap("", "<Space>", ":")
 utils.nnoremap("<leader>ev", "<cmd>vs $MYVIMRC<CR>")
 utils.nnoremap("<leader>sv", "<cmd>source $MYVIMRC<CR>")
 
--- quote quickly
-utils.inoremap('<leader>"', '<Esc>viw<Esc>a"<Esc>bi"<Esc>leli')
-utils.vnoremap('<leader>"', '<Esc>`<i"<Esc>`>ea"<Esc>')
-
 -- substitute shortcut
-utils.nnoremap("S", ":%s//g<Left><Left>")
-utils.vnoremap("S", ":s//g<Left><Left>")
+utils.nnoremap("<leader>s", ":%s//g<Left><Left>")
+utils.vnoremap("<leader>s", ":s//g<Left><Left>")
 
 -- quickfix navigation
 utils.nnoremap("<leader>q", "<cmd>cnext<cr>")
