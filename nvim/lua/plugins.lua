@@ -34,4 +34,5 @@ return require('packer').startup(function(use)
   }
   use {'kyazdani42/nvim-web-devicons'}
   use {'tpope/vim-surround'}
+  use { 'p00f/clangd_extensions.nvim' }
 end)
