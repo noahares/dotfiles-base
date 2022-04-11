@@ -24,8 +24,8 @@ local custom_attach = function(client)
   utils.nnoremap('<F5>','<cmd>lua vim.lsp.buf.code_action()<CR>')
   utils.nnoremap('<leader>r','<cmd>lua vim.lsp.buf.rename()<CR>')
   utils.nnoremap('<leader>=', '<cmd>lua vim.lsp.buf.formatting()<CR>')
-  utils.nnoremap('<leader>d', '<cmd>lua vim.lsp.diagnostic.goto_next()<CR>')
-  utils.nnoremap('<leader>D', '<cmd>lua vim.lsp.diagnostic.goto_prev()<CR>')
+  utils.nnoremap('<leader>d', '<cmd>lua vim.diagnostic.goto_next()<CR>')
+  utils.nnoremap('<leader>D', '<cmd>lua vim.diagnostic.goto_prev()<CR>')
 end
 
 local function get_lua_runtime()
@@ -48,11 +48,6 @@ vim.lsp.set_log_level("debug")
 local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
 -- setup all lsp servers here
 local nvim_lsp = require'lspconfig'
-nvim_lsp.clangd.setup{
-  capabilities = capabilities,
-  on_attach=custom_attach,
-  filetypes = {"c", "cpp", "objc", "objcpp", "hpp", "h"}
-}
 nvim_lsp.bashls.setup{
   capabilities = capabilities,
   on_attach=custom_attach
@@ -133,6 +128,9 @@ require("clangd_extensions").setup {
   server = {
     -- options to pass to nvim-lspconfig
     -- i.e. the arguments to require("lspconfig").clangd.setup({})
+    capabilities = capabilities,
+    on_attach=custom_attach,
+    filetypes = {"c", "cpp", "objc", "objcpp", "hpp", "h"}
   },
   extensions = {
     -- defaults:
