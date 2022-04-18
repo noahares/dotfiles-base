@@ -34,5 +34,9 @@ return require('packer').startup(function(use)
   }
   use {'kyazdani42/nvim-web-devicons'}
   use {'tpope/vim-surround'}
+  use {
+    "nvim-neorg/neorg",
+    requires = {{"nvim-lua/plenary.nvim"}, {"nvim-neorg/neorg-telescope"}}
+  }
   use { 'p00f/clangd_extensions.nvim' }
 end)

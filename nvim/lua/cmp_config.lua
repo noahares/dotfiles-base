@@ -21,6 +21,7 @@ cmp.setup{
     { name = 'path' },
     -- { name = 'luasnip' }, -- For luasnip users.
     { name = 'ultisnips' },
+    { name = 'neorg' },
   },
   formatting = {
   format = require("lspkind").cmp_format({with_text = true, menu = ({
@@ -31,10 +32,10 @@ cmp.setup{
       ultisnips = "[ultisnips]",
       nvim_lua = "[api]",
       latex_symbols = "[latex]",
+      neorg = "[neorg]",
     })}),
   },
   experimental = {
-    native_menu = false,
     ghost_text = true,
   },
   sorting = {
@@ -49,6 +50,9 @@ cmp.setup{
       cmp.config.compare.order,
     },
   },
+  view = {
+    entries = 'native'
+  }
 }
 
 -- Setup lspconfig.

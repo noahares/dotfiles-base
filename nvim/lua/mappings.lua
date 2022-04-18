@@ -75,3 +75,10 @@ utils.nnoremap("cr", "<cmd>lua find_project_root()<cr>")
 -- tab for completion menu
 utils.inoremap("<Tab>", 'pumvisible() ? "\\<C-n>" : "\\<Tab>"', {expr = true})
 utils.inoremap("<S-Tab>", 'pumvisible() ? "\\<C-p>" : "\\<Tab>"', {expr = true})
+
+-- part of switch to native keymap function
+local opts = { noremap = true, silent = true }
+
+-- better shift
+vim.api.nvim_set_keymap('v', ">", ">gv", opts)
+vim.api.nvim_set_keymap('v', "<", "<gv", opts)
