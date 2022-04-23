@@ -4,15 +4,16 @@ require('neorg').setup {
     ["core.norg.dirman"] = {
       config = {
         workspaces = {
-          uni = "~/norg-test/uni",
-          private = "~/norg-test/private",
+          uni = "~/Seafile/neorg/uni",
+          private = "~/Seafile/neorg/private",
+          default = "~/Seafile/neorg",
         }
       }
     },
     ["core.norg.concealer"] = {},
     ["core.gtd.base"] = {
       config = {
-        workspace = "private",
+        workspace = "default",
         default_lists = {
           inbox = "inbox.norg",
         }
