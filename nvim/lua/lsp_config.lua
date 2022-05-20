@@ -9,10 +9,6 @@ local custom_attach = function(client)
       update_in_insert = false,
     }
   )
-  -- automatic diagnostics popup
-  -- vim.api.nvim_command('autocmd CursorHold <buffer> lua vim.diagnostic.open_float(0, {scope="line"})')
-  -- speedup diagnostics popup
-  -- vim.o.updatetime=1000
 
   utils.nnoremap('gD','<cmd>lua vim.lsp.buf.declaration()<CR>')
   utils.nnoremap('<c-]>','<cmd>lua vim.lsp.buf.definition()<CR>')
@@ -112,7 +108,7 @@ nvim_lsp.sumneko_lua.setup{
         "vim", "describe", "it", "before_each", "after_each" }
       },
       workspace = {
-        library = get_lua_runtime(),
+        library = vim.api.nvim_get_runtime_file("", true),
         maxPreload = 1000,
         preloadFileSize = 1000,
       }
@@ -130,7 +126,14 @@ require("clangd_extensions").setup {
     -- i.e. the arguments to require("lspconfig").clangd.setup({})
     capabilities = capabilities,
     on_attach=custom_attach,
-    filetypes = {"c", "cpp", "objc", "objcpp", "hpp", "h"}
+    filetypes = {"c", "cpp", "objc", "objcpp", "hpp", "h"},
+    cmd = {
+      "clangd",
+      "--completion-style=detailed",
+      "--clang-tidy",
+      "--header-insertion=iwyu",
+      "--header-insertion-decorators"
+    }
   },
   extensions = {
     -- defaults:
@@ -198,3 +201,9 @@ require("clangd_extensions").setup {
     },
   }
 }
+require('rust-tools').setup({
+  server = {
+    capabilities = capabilities,
+    on_attach = custom_attach
+  }
+})

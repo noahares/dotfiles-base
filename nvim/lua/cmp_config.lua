@@ -3,25 +3,23 @@ vim.o.completeopt="menu,menuone,noselect"
 cmp.setup{
   snippet = {
       expand = function(args)
-        -- require('luasnip').lsp_expand(args.body) -- For `luasnip` users.
-        vim.fn["UltiSnips#Anon"](args.body) -- For `ultisnips` users.
+        require('luasnip').lsp_expand(args.body) -- For `luasnip` users.
       end,
     },
   mapping = {
     ['<C-d>'] = cmp.mapping.scroll_docs(-4),
-    ['<C-f>'] = cmp.mapping.scroll_docs(4),
+    ['<C-u>'] = cmp.mapping.scroll_docs(4),
     ['<C-Space>'] = cmp.mapping.complete(),
     ['<C-e>'] = cmp.mapping.close(),
     ['<C-y>'] = cmp.mapping.confirm({ select = true }),
   },
   sources = cmp.config.sources{
-    { name = 'buffer', keyword_length = 4 },
     { name = 'nvim_lua' },
     { name = 'nvim_lsp' },
     { name = 'path' },
-    -- { name = 'luasnip' }, -- For luasnip users.
-    { name = 'ultisnips' },
+    { name = 'luasnip' }, -- For luasnip users.
     { name = 'neorg' },
+    { name = 'buffer', keyword_length = 4 },
   },
   formatting = {
   format = require("lspkind").cmp_format({with_text = true, menu = ({
@@ -29,9 +27,7 @@ cmp.setup{
       path = "[path]",
       nvim_lsp = "[lsp]",
       luasnip = "[LuaSnip]",
-      ultisnips = "[ultisnips]",
       nvim_lua = "[api]",
-      latex_symbols = "[latex]",
       neorg = "[neorg]",
     })}),
   },

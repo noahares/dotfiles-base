@@ -1,5 +1,10 @@
 local Utils = {}
 
+Utils.load = function(module)
+  package.loaded[module] = nil
+  return require(module)
+end
+
 function Utils.map(type, key, value, opts)
   local options = opts or {}
   vim.api.nvim_set_keymap(type, key, value, options)
@@ -54,12 +59,5 @@ function Utils.tmap(key, value, opts)
 end
 
 P = function(stuff) return print(vim.inspect(stuff)) end
-
--- SET OPTS --> EG --> opt('b', 'expandtab', true)
-local scopes = {o = vim.o, b = vim.bo, w = vim.wo, g = vim.g}
-function Utils.opt(scope, key, value)
-  scopes[scope][key] = value
-  if scope ~= 'o' then scopes['o'][key] = value end
-end
 
 return Utils

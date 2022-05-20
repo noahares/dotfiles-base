@@ -1,11 +1,24 @@
 -- update plugins
-vim.cmd([[autocmd BufWritePost plugins.lua PackerCompile]])
+vim.api.nvim_create_autocmd('BufWritePost', {
+  pattern = 'plugins.lua',
+  command = 'source <afile> | PackerCompile',
+})
 
 -- remove trailing whitespaces
-vim.cmd([[autocmd BufWritePre * %s/\s\+$//e]])
+vim.api.nvim_create_autocmd('BufWritePre', {
+  command = [[%s/\s\+$//e]],
+})
 -- remove trailing newline
-vim.cmd([[autocmd BufWritePre * %s/\n\+\%$//e]])
+vim.api.nvim_create_autocmd('BufWritePre', {
+  command = [[%s/\n\+\%$//e]],
+})
 -- Run xrdb whenever Xdefaults or Xresources are updated.
-vim.cmd([[autocmd BufWritePost *xresources !xrdb %]])
+vim.api.nvim_create_autocmd('BufWritePost', {
+  pattern = '*xresources',
+  command = '!xrdb %',
+})
 -- Update binds when sxhkdrc is updated.
-vim.cmd([[autocmd BufWritePost *sxhkdrc !pkill -USR1 sxhkd]])
+vim.api.nvim_create_autocmd('BufWritePost', {
+  pattern = '*sxhkdrc',
+  command = '!pkill -USR1 sxhkd',
+})
