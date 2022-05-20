@@ -145,16 +145,16 @@ XF86AudioMute
 XF86Audio{Raise,Lower}Volume
     amixer -D pulse sset Master 5%{+,-};
 XF86Audio{Play,Stop}
-    mpc {toggle,stop}
+    playerctl {play-pause,stop}
 XF86Audio{Next,Prev}
-    mpc {next,prev}
+    playerctl {next,previous}
 #XF86Explorer
 
 XF86Search
     $TERMINAL -e zsh -ic of
 
 XF86Calculator
-    $TERMINAL -c calc -e bc -lq
+    $TERMINAL -c calc -e qalc
 
 XF86Tools
     output_switch.sh; polybar-msg hook audio_out 1
@@ -175,4 +175,5 @@ super + F1
 #
 
 Print
-    scrot -s -l opacity=0 -e 'xclip -selection clipboard -t image/png -i $f' ~/pictures/screenshots/$(date '+%Y%m%d-%H-%M-%S').png
+    flameshot gui
+    # scrot -s -l opacity=0 -e 'xclip -selection clipboard -t image/png -i $f' ~/pictures/screenshots/$(date '+%Y%m%d-%H-%M-%S').png
