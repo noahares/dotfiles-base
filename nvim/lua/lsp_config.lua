@@ -133,7 +133,9 @@ require("clangd_extensions").setup {
       "--clang-tidy",
       "--header-insertion=iwyu",
       "--header-insertion-decorators"
-    }
+    },
+    root_dir = nvim_lsp.util.root_pattern('.git'),
+    single_file_support = true,
   },
   extensions = {
     -- defaults:
