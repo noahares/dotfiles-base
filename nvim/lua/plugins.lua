@@ -36,4 +36,9 @@ return require('packer').startup(function(use)
   }
   use { 'p00f/clangd_extensions.nvim' }
   use {'simrat39/rust-tools.nvim'}
+  use {"akinsho/toggleterm.nvim", tag = 'v2.*', config = function()
+    require("toggleterm").setup{
+      open_mapping = '<leader>t',
+    }
+  end}
 end)

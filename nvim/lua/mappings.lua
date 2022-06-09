@@ -1,69 +1,59 @@
-local utils = require('utils')
+local map = vim.keymap.set
+
+local opts = { silent = true }
 
 -- split resize
-utils.nnoremap("<leader>-", "<cmd>vertical resize -10<CR>")
-utils.nnoremap("<leader>+", "<cmd>vertical resize +10<CR>")
-utils.nnoremap("<leader>_", "<cmd>resize -10<CR>")
-utils.nnoremap("<leader>*", "<cmd>resize +10<CR>")
+map("n", "<leader>-", "<cmd>vertical resize -10<CR>", opts)
+map("n", "<leader>+", "<cmd>vertical resize +10<CR>", opts)
+map("n", "<leader>_", "<cmd>resize -10<CR>", opts)
+map("n", "<leader>*", "<cmd>resize +10<CR>", opts)
 
 -- split navigation
-utils.nnoremap("<C-h>", "<C-w>h")
-utils.nnoremap("<C-j>", "<C-w>j")
-utils.nnoremap("<C-k>", "<C-w>k")
-utils.nnoremap("<C-l>", "<C-w>l")
+map("n", "<C-h>", "<C-w>h", opts)
+map("n", "<C-j>", "<C-w>j", opts)
+map("n", "<C-k>", "<C-w>k", opts)
+map("n", "<C-l>", "<C-w>l", opts)
 
 -- move lines up and down in visual mode
-utils.xnoremap("K", ":move '<-2<CR>gv-gv")
-utils.xnoremap("J", ":move '>+1<CR>gv-gv")
+map("x", "K", ":move '<-2<CR>gv-gv", opts)
+map("x", "J", ":move '>+1<CR>gv-gv", opts)
 
 -- useful bindings
-utils.inoremap("kj", "<Esc>")
-utils.noremap("", "<Space>", ":")
-utils.nnoremap("<leader>ev", "<cmd>vs $MYVIMRC<CR>")
-utils.nnoremap("<leader>sv", "<cmd>source $MYVIMRC<CR>")
+map("i", "kj", "<Esc>", opts)
+map("", "<Space>", ":")
+map("n", "<leader>ev", "<cmd>vs $MYVIMRC<CR>", opts)
+map("n", "<leader>sv", "<cmd>source $MYVIMRC<CR>")
 
 -- substitute shortcut
-utils.nnoremap("<leader>s", ":%s//g<Left><Left>")
-utils.vnoremap("<leader>s", ":s//g<Left><Left>")
+map("n", "<leader>s", ":%s//g<Left><Left>")
+map("v", "<leader>s", ":s//g<Left><Left>")
 
 -- quickfix navigation
-utils.nnoremap("<leader>q", "<cmd>cnext<cr>")
-utils.nnoremap("<leader>Q", "<cmd>cprev<cr>")
+map("n", "<leader>q", "<cmd>cnext<cr>", opts)
+map("n", "<leader>Q", "<cmd>cprev<cr>", opts)
 
 -- spellcheck
-utils.nnoremap("<leader>sp", ":setlocal spell spelllang=de")
+map("n", "<leader>sp", ":setlocal spell spelllang=de")
 
 -- dont use arrow keys you filthy casual
-utils.nnoremap("<Up>", "<NOP>")
-utils.nnoremap("<Down>", "<NOP>")
-utils.nnoremap("<Left>", "<NOP>")
-utils.nnoremap("<Right>", "<NOP>")
-utils.inoremap("<Up>", "<NOP>")
-utils.inoremap("<Down>", "<NOP>")
-utils.inoremap("<Left>", "<NOP>")
-utils.inoremap("<Right>", "<NOP>")
-utils.vnoremap("<Up>", "<NOP>")
-utils.vnoremap("<Down>", "<NOP>")
-utils.vnoremap("<Left>", "<NOP>")
-utils.vnoremap("<Right>", "<NOP>")
-utils.nnoremap("H", "^")
-utils.nnoremap("L", "$")
+map({"n", "i", "v"}, "<Up>", "<NOP>", opts)
+map({"n", "i", "v"}, "<Down>", "<NOP>", opts)
+map({"n", "i", "v"}, "<Left>", "<NOP>", opts)
+map({"n", "i", "v"}, "<Right>", "<NOP>", opts)
+map("n", "H", "^", opts)
+map("n", "L", "$", opts)
 
 -- write to ----READONLY---- files
-utils.cnoremap("w!!",  "execute 'silent! write !sudo tee % >/dev/null' <bar> edit!")
+map("c", "w!!",  "execute 'silent! write !sudo tee % >/dev/null' <bar> edit!")
 
 -- terminal mappings
-utils.tnoremap("<Esc>", "<C-\\><C-n>")
-utils.nnoremap("<leader>t", "<cmd>sp | term<cr>")
+map("t", "<Esc>", "<C-\\><C-n>", opts)
+-- map("n", "<leader>t", "<cmd>sp | term<cr>", opts)
 
 -- smart cwd
-utils.nnoremap("cf", "<cmd>cd %:p:h | pwd<cr>")
-require("project_root")
-utils.nnoremap("cr", "<cmd>lua find_project_root()<cr>")
-
--- part of switch to native keymap function
-local opts = { noremap = true, silent = true }
+map("n", "cf", "<cmd>cd %:p:h | pwd<cr>")
+map("n", "cr", function() require("project_root").find_project_root() end)
 
 -- better shift
-vim.keymap.set('v', ">", ">gv", opts)
-vim.keymap.set('v', "<", "<gv", opts)
+map("v", ">", ">gv", opts)
+map("v", "<", "<gv", opts)

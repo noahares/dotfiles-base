@@ -1,6 +1,8 @@
 local api = vim.api
 
-function find_project_root()
+local M = {}
+
+function M.find_project_root()
   local id = [[.git]]
   local file = api.nvim_buf_get_name(0)
   local root = vim.fn.finddir(id, file .. ';')
@@ -14,3 +16,5 @@ function find_project_root()
     print("No repo found.")
   end
 end
+
+return M

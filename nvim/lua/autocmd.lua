@@ -22,3 +22,8 @@ vim.api.nvim_create_autocmd('BufWritePost', {
   pattern = '*sxhkdrc',
   command = '!pkill -USR1 sxhkd',
 })
+-- formatopts
+vim.api.nvim_create_autocmd('FileType', {
+  pattern = '*',
+  callback = function() vim.opt.formatoptions:remove {'r', 'o'} end,
+})

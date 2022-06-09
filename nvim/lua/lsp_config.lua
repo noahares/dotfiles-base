@@ -1,6 +1,6 @@
-local utils = require("utils")
+local map = vim.keymap.set
 
-local custom_attach = function(client)
+local custom_attach = function(_)
 	print("LSP started.");
 
   vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
@@ -10,34 +10,19 @@ local custom_attach = function(client)
     }
   )
 
-  utils.nnoremap('gD','<cmd>lua vim.lsp.buf.declaration()<CR>')
-  utils.nnoremap('<c-]>','<cmd>lua vim.lsp.buf.definition()<CR>')
-  utils.nnoremap('K','<cmd>lua vim.lsp.buf.hover()<CR>')
-  utils.nnoremap('gr','<cmd>lua vim.lsp.buf.references()<CR>')
-  utils.nnoremap('gs','<cmd>lua vim.lsp.buf.signature_help()<CR>')
-  utils.nnoremap('gi','<cmd>lua vim.lsp.buf.implementation()<CR>')
-  utils.nnoremap('<F2>', '<cmd>lua vim.diagnostic.open_float(0, {scope = "line"})<CR>')
-  utils.nnoremap('<F5>','<cmd>lua vim.lsp.buf.code_action()<CR>')
-  utils.nnoremap('<leader>r','<cmd>lua vim.lsp.buf.rename()<CR>')
-  utils.nnoremap('<leader>=', '<cmd>lua vim.lsp.buf.formatting()<CR>')
-  utils.nnoremap('<leader>d', '<cmd>lua vim.diagnostic.goto_next()<CR>')
-  utils.nnoremap('<leader>D', '<cmd>lua vim.diagnostic.goto_prev()<CR>')
-end
-
-local function get_lua_runtime()
-    local result = {}
-    for _, path in pairs(vim.api.nvim_list_runtime_paths()) do
-        local lua_path = path .. "/lua/"
-        if vim.fn.isdirectory(lua_path) == 1 then
-            result[lua_path] = true
-        end
-    end
-
-    -- This loads the `lua` files from nvim into the runtime.
-    result[vim.fn.expand("$VIMRUNTIME/lua")] = true
-    result[vim.fn.expand("$VIMRUNTIME/lua/vim/lsp")] = true
-
-    return result
+  map('n', 'gD','<cmd>lua vim.lsp.buf.declaration()<CR>')
+  map('n', '<c-]>','<cmd>lua vim.lsp.buf.definition()<CR>')
+  map('n', 'K','<cmd>lua vim.lsp.buf.hover()<CR>')
+  map('n', 'gr','<cmd>lua vim.lsp.buf.references()<CR>')
+  map('n', 'gs','<cmd>lua vim.lsp.buf.signature_help()<CR>')
+  map('n', 'gi','<cmd>lua vim.lsp.buf.implementation()<CR>')
+  map('n', '<F2>', '<cmd>lua vim.diagnostic.open_float(0, {scope = "line"})<CR>')
+  map('n', '<F5>','<cmd>lua vim.lsp.buf.code_action()<CR>')
+  map('n', '<leader>r','<cmd>lua vim.lsp.buf.rename()<CR>')
+  map('n', '<leader>=', '<cmd>lua vim.lsp.buf.format { async = true }<CR>')
+  map('v', '<leader>=', '<cmd>lua vim.lsp.buf.range_formatting()<CR>')
+  map('n', '<leader>d', '<cmd>lua vim.diagnostic.goto_next()<CR>')
+  map('n', '<leader>D', '<cmd>lua vim.diagnostic.goto_prev()<CR>')
 end
 
 vim.lsp.set_log_level("debug")
