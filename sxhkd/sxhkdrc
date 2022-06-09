@@ -5,9 +5,9 @@
 super + Return
     $TERMINAL
 super + d
-    rofi -show drun
+    launcher_text
 super + shift + d
-    run_script.sh
+    launcher_text | bspwmfloat.sh
 super + e
     $TERMINAL -e zsh -ic neomutt
 super + n
@@ -15,9 +15,9 @@ super + n
 super + m
     playlist_chooser.sh
 super + shift + m
-    amixer -D pulse set Capture toggle; polybar-msg hook mic 1
+    radio.sh
 super + shift + w
-    $TERMINAL -e nmtui
+    applet_network
 super + w
     $BROWSER
 super + g
@@ -29,7 +29,7 @@ super + p
 super + shift + x
     lock.sh $HOME/pictures/icons/lock.png
 super + z
-    shutdown_dialog.sh
+    menu_powermenu
 super + shift + z
     shutdown now
 super + Insert
