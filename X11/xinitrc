@@ -32,7 +32,7 @@ fi
 
 setxkbmap -layout us -variant altgr-intl
 sxhkd &
-easystroke --config-dir $XDG_CONFIG_HOME/easystroke/ enable &
+mousekey_mapper.py &
 unclutter &
 picom -f &
 dunst &
