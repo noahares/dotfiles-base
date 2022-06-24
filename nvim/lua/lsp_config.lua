@@ -11,11 +11,8 @@ local custom_attach = function(_)
   )
 
   map('n', 'gD','<cmd>lua vim.lsp.buf.declaration()<CR>')
-  map('n', '<c-]>','<cmd>lua vim.lsp.buf.definition()<CR>')
   map('n', 'K','<cmd>lua vim.lsp.buf.hover()<CR>')
-  map('n', 'gr','<cmd>lua vim.lsp.buf.references()<CR>')
   map('n', 'gs','<cmd>lua vim.lsp.buf.signature_help()<CR>')
-  map('n', 'gi','<cmd>lua vim.lsp.buf.implementation()<CR>')
   map('n', '<F2>', '<cmd>lua vim.diagnostic.open_float(0, {scope = "line"})<CR>')
   map('n', '<F5>','<cmd>lua vim.lsp.buf.code_action()<CR>')
   map('n', '<leader>r','<cmd>lua vim.lsp.buf.rename()<CR>')
@@ -23,6 +20,10 @@ local custom_attach = function(_)
   map('v', '<leader>=', '<cmd>lua vim.lsp.buf.range_formatting()<CR>')
   map('n', '<leader>d', '<cmd>lua vim.diagnostic.goto_next()<CR>')
   map('n', '<leader>D', '<cmd>lua vim.diagnostic.goto_prev()<CR>')
+
+  map('n', '<c-]>','<cmd>Telescope lsp_definitions<CR>')
+  map('n', 'gr','<cmd>Telescope lsp_references<CR>')
+  map('n', 'gi','<cmd>lua Telescope lsp_implementations<CR>')
 end
 
 vim.lsp.set_log_level("debug")
