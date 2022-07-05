@@ -27,6 +27,7 @@ local custom_attach = function(_)
 end
 
 vim.lsp.set_log_level("debug")
+require('vim.lsp.log').set_format_func(vim.inspect)
 local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
 -- setup all lsp servers here
 local nvim_lsp = require'lspconfig'
