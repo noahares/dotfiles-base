@@ -23,6 +23,7 @@ setbg.sh
 launch_polybar.sh &
 seafile-applet &
 messengers.sh &
+stalonetray &
 #mycroft-start all &
 
 bspc config border_width         1
