@@ -2,7 +2,7 @@ local map = vim.keymap.set
 
 require('telescope').setup{
   defaults = {
-    -- defaults here
+    wrap_results = true,
   },
   pickers = {
     buffers = {

@@ -27,3 +27,8 @@ vim.api.nvim_create_autocmd('FileType', {
   pattern = '*',
   callback = function() vim.opt.formatoptions:remove {'r', 'o'} end,
 })
+-- telescope preview wrap
+vim.api.nvim_create_autocmd('User', {
+  pattern = 'TelescopePreviewerLoaded',
+  command = 'setlocal wrap',
+})
