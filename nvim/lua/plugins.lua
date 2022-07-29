@@ -6,6 +6,7 @@ return require('packer').startup(function(use)
   use {'morhetz/gruvbox'}
   use {'neovim/nvim-lspconfig'}
   use {'nvim-treesitter/nvim-treesitter'}
+  use {'nvim-treesitter/nvim-treesitter-textobjects'}
   use {'hrsh7th/nvim-cmp'}
   use {'hrsh7th/cmp-buffer'}
   use {'hrsh7th/cmp-path'}
