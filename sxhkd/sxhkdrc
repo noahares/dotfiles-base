@@ -5,9 +5,9 @@
 super + Return
     $TERMINAL
 super + d
-    launcher_text
+    rofi -show drun
 super + shift + d
-    launcher_text | bspwmfloat.sh
+    rofi -show drun | bspwmfloat.sh
 super + e
     $TERMINAL -e zsh -ic neomutt
 super + n
@@ -34,6 +34,8 @@ super + shift + z
     shutdown now
 super + Insert
     showclip.sh
+super + v
+    neovide --multigrid
 
 #
 # bspwm
