@@ -63,7 +63,7 @@ precmd_vcs_info() { vcs_info }
 precmd_functions+=( precmd_vcs_info )
 setopt prompt_subst
 zstyle ':vcs_info:git:*' formats '(%b)'
-export PROMPT="%F{#fabd2f}%~%f \$vcs_info_msg_0_ $ "
+export PROMPT="%F{#F9E2AF}%~%f \$vcs_info_msg_0_ $ "
 
 source $ZDOTDIR/aliases
 (cat ~/.cache/wal/sequences &)
