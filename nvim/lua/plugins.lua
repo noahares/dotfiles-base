@@ -4,6 +4,9 @@ return require('packer').startup(function(use)
   use {'wbthomason/packer.nvim'}
   use {'tpope/vim-fugitive'}
   use {'morhetz/gruvbox'}
+  use {
+    'catppuccin/nvim',
+    as = 'catppuccin'}
   use {'neovim/nvim-lspconfig'}
   use {'nvim-treesitter/nvim-treesitter'}
   use {'nvim-treesitter/nvim-treesitter-textobjects'}
@@ -42,4 +45,29 @@ return require('packer').startup(function(use)
       open_mapping = '<leader>t',
     }
   end}
+  use {
+    "Pocco81/true-zen.nvim",
+    config = function()
+      require("true-zen").setup{
+      }
+    end}
+  use { 'elkowar/yuck.vim' }
+  use({
+    'https://github.com/nat-418/boole.nvim',
+    config = function()
+      require('boole').setup({
+        mappings = {
+          increment = '<C-a>',
+          decrement = '<C-x>'
+        },
+        -- Key value pairs of additional replacements
+        -- increment: (key => value)
+        -- decrement: (value => key)
+        pair_additions = {
+          -- ['Foo'] = 'Bar',
+          -- ['Bar'] = 'Foo'
+        },
+      })
+    end
+  })
 end)

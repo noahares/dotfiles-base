@@ -46,3 +46,6 @@ opt.clipboard:append {'unnamedplus'}
 -- vim.opt.list = true
 -- vim.opt.listchars:append("multispace:⋅")
 -- vim.opt.listchars:append("eol:↴")
+
+g.neovide_cursor_animation_length=0
+g.neovide_cursor_trail_length=0.2
