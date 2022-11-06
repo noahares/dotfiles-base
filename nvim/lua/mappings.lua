@@ -61,3 +61,6 @@ map("n", "cr", function() require("project_root").find_project_root() end)
 -- better shift
 map("v", ">", ">gv", opts)
 map("v", "<", "<gv", opts)
+
+-- neorg
+map("n", "<leader>n", "<cmd>Neorg workspace notes<CR>")

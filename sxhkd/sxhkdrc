@@ -35,7 +35,7 @@ super + shift + z
 super + Insert
     showclip.sh
 super + v
-    neovide --multigrid
+    neovide --multigrid --maximized
 
 #
 # bspwm

@@ -28,7 +28,7 @@ end
 
 -- vim.lsp.set_log_level("debug")
 require('vim.lsp.log').set_format_func(vim.inspect)
-local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
+local capabilities = require('cmp_nvim_lsp').default_capabilities()
 -- setup all lsp servers here
 local nvim_lsp = require'lspconfig'
 nvim_lsp.bashls.setup{
@@ -90,14 +90,15 @@ nvim_lsp.sumneko_lua.setup{
           vim.split(package.path, ';'),
         },
       },
-      completion = { keywordSnippet = "Disable", },
-      diagnostics = { enable = true, globals = {
-        "vim", "describe", "it", "before_each", "after_each" }
+      -- completion = { keywordSnippet = "Disable", },
+      diagnostics = {
+        globals = { "vim" }
       },
       workspace = {
         library = vim.api.nvim_get_runtime_file("", true),
         maxPreload = 1000,
         preloadFileSize = 1000,
+        checkThirdParty = false,
       }
     }
   }
@@ -195,4 +196,24 @@ require('rust-tools').setup({
     capabilities = capabilities,
     on_attach = custom_attach
   }
+})
+nvim_lsp.ltex.setup({
+  capabilities = capabilities,
+  on_attach=custom_attach,
+  settings = {
+    ltex = {
+      -- additionalRules = {
+      --   enablePickyRules = true,
+      --   motherTongue = "de-DE",
+      -- },
+      completionEnabled = true,
+      enabledRules = {
+        ["en-US"] = {
+          "PUNCTUATION",
+          "COMPOUNDING",
+          "GRAMMAR",
+        },
+      }
+    },
+  },
 })
