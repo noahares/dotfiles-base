@@ -51,3 +51,5 @@ opt.cmdheight = 0
 
 g.neovide_cursor_animation_length=0
 g.neovide_cursor_trail_length=0.2
+
+vim.wo.signcolumn = "yes"

@@ -19,7 +19,7 @@ parser_configs.norg_table = {
 }
 
 require'nvim-treesitter.configs'.setup {
-  ensure_installed = {"cpp", "lua", "bash", "python", "typescript", "javascript", "norg", "norg_meta", "norg_table", "rust"},
+  ensure_installed = {"cpp", "c", "lua", "bash", "python", "typescript", "javascript", "norg", "norg_meta", "norg_table", "rust", "latex"},
   highlight = {
     enable = true,
   },

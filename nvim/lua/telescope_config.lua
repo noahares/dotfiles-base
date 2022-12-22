@@ -14,6 +14,9 @@ require('telescope').setup{
     bibtex = {
       depth = 1,
     },
+    undo = {
+      side_by_side = true,
+    },
   }
 }
 
@@ -26,3 +29,4 @@ map('n', '<leader>f', '<cmd>Telescope live_grep<cr>')
 map('n', '<leader>z', '<cmd>Telescope spell_suggest<cr>')
 map('','<F1>', '<cmd>Telescope help_tags<cr>')
 map('i', '<leader>s', '<cmd>Telescope symbols<cr>')
+map("n", "<leader>u", "<cmd>Telescope undo<cr>")

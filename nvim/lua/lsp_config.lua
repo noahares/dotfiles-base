@@ -1,4 +1,5 @@
 local map = vim.keymap.set
+local opts = { noremap=true, silent=true }
 
 local custom_attach = function(_)
 	print("LSP started.");
@@ -10,20 +11,19 @@ local custom_attach = function(_)
     }
   )
 
-  map('n', 'gD','<cmd>lua vim.lsp.buf.declaration()<CR>')
-  map('n', 'K','<cmd>lua vim.lsp.buf.hover()<CR>')
-  map('n', 'gs','<cmd>lua vim.lsp.buf.signature_help()<CR>')
-  map('n', '<F2>', '<cmd>lua vim.diagnostic.open_float(0, {scope = "line"})<CR>')
-  map('n', '<F5>','<cmd>lua vim.lsp.buf.code_action()<CR>')
-  map('n', '<leader>r','<cmd>lua vim.lsp.buf.rename()<CR>')
-  map('n', '<leader>=', '<cmd>lua vim.lsp.buf.format { async = true }<CR>')
-  map('v', '<leader>=', '<cmd>lua vim.lsp.buf.range_formatting()<CR>')
-  map('n', '<leader>d', '<cmd>lua vim.diagnostic.goto_next()<CR>')
-  map('n', '<leader>D', '<cmd>lua vim.diagnostic.goto_prev()<CR>')
+  map('n', 'gD', vim.lsp.buf.declaration, opts)
+  map('n', 'K', vim.lsp.buf.hover, opts)
+  map('n', 'gs', vim.lsp.buf.signature_help, opts)
+  map('n', '<leader>d', vim.diagnostic.open_float, opts)
+  map('n', '<leader>ca', vim.lsp.buf.code_action, opts)
+  map('n', '<leader>r', vim.lsp.buf.rename, opts)
+  map({'n', 'v'}, '<leader>=', function() vim.lsp.buf.format({ async = true }) end, opts)
+  map('n', '[d', vim.diagnostic.goto_next, opts)
+  map('n', ']d', vim.diagnostic.goto_prev, opts)
 
-  map('n', '<c-]>','<cmd>Telescope lsp_definitions<CR>')
-  map('n', 'gr','<cmd>Telescope lsp_references<CR>')
-  map('n', 'gi','<cmd>lua Telescope lsp_implementations<CR>')
+  map('n', '<c-]>','<cmd>Telescope lsp_definitions<CR>', opts)
+  map('n', 'gr','<cmd>Telescope lsp_references<CR>', opts)
+  map('n', 'gi','<cmd>lua Telescope lsp_implementations<CR>', opts)
 end
 
 -- vim.lsp.set_log_level("debug")
@@ -191,10 +191,29 @@ require("clangd_extensions").setup {
     },
   }
 }
-require('rust-tools').setup({
+local rt = require"rust-tools"
+rt.setup({
   server = {
     capabilities = capabilities,
-    on_attach = custom_attach
+    on_attach = function(_, bufnr)
+      custom_attach()
+      map("n", "<C-space>", rt.hover_actions.hover_actions, { buffer = bufnr })
+    end,
+    settings = {
+      ["rust-analyzer"] = {
+        checkOnSave = {
+          command = "clippy",
+        },
+      },
+    },
+  },
+  -- dap = {
+  --   adapter = require('rust-tools.dap').get_codelldb_adapter(
+  --   '/usr/bin/codelldb/adapter/codelldb',
+  --   '/usr/lib/liblldb.so')
+  -- },
+  hover_actions = {
+    auto_focus = true
   }
 })
 nvim_lsp.ltex.setup({
@@ -210,6 +229,7 @@ nvim_lsp.ltex.setup({
   end,
   settings = {
     ltex = {
+      -- language = "de-DE",
       -- additionalRules = {
       --   enablePickyRules = true,
       --   motherTongue = "de-DE",
@@ -217,6 +237,11 @@ nvim_lsp.ltex.setup({
       completionEnabled = true,
       enabledRules = {
         ["en-US"] = {
+          "PUNCTUATION",
+          "COMPOUNDING",
+          "GRAMMAR",
+        },
+        ["de-DE"] = {
           "PUNCTUATION",
           "COMPOUNDING",
           "GRAMMAR",
