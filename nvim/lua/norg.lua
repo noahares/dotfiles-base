@@ -9,14 +9,14 @@ require('neorg').setup {
       }
     },
     ["core.norg.concealer"] = {},
-    ["core.gtd.base"] = {
-      config = {
-        workspace = "notes",
-        default_lists = {
-          inbox = "inbox.norg",
-        }
-      }
-    },
+    -- ["core.gtd.base"] = {
+    --   config = {
+    --     workspace = "notes",
+    --     default_lists = {
+    --       inbox = "inbox.norg",
+    --     }
+    --   }
+    -- },
     ['core.keybinds'] = {
       config = {
         default_keybinds = true,

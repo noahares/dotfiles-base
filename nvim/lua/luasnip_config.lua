@@ -7,7 +7,7 @@ ls.config.set_config({
 })
 
 vim.keymap.set({'i', 's'}, "<c-k>", function()
-  if ls.expand_or_jumpable() then
+  if ls.expand_or_locally_jumpable() then
     print("success")
     ls.expand_or_jump()
   end
@@ -38,6 +38,8 @@ local f = ls.function_node
 local d = ls.dynamic_node
 
 ls.cleanup()
+
+require("luasnip.loaders.from_vscode").lazy_load()
 
 ls.add_snippets(nil, {
   all = {

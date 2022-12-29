@@ -62,12 +62,13 @@ return require('packer').startup(function(use)
 
   -- other essentials
   use {'tpope/vim-fugitive'}
-  use {'honza/vim-snippets'}
+  use {"rafamadriz/friendly-snippets"}
   use {'L3MON4D3/LuaSnip'}
   use {'folke/todo-comments.nvim'}
   use {'numToStr/Comment.nvim'}
   use {
     "nvim-neorg/neorg",
+    run = ":Neorg sync-parsers",
     requires = {{"nvim-lua/plenary.nvim"}, {"nvim-neorg/neorg-telescope"}}
   }
   use {"akinsho/toggleterm.nvim", tag = 'v2.*', config = function()
