@@ -66,7 +66,6 @@ zstyle ':vcs_info:git:*' formats '(%b)'
 export PROMPT="%F{#F9E2AF}%~%f \$vcs_info_msg_0_ $ "
 
 source $ZDOTDIR/aliases
-(cat ~/.cache/wal/sequences &)
 source /usr/share/fzf/key-bindings.zsh
 source /usr/share/fzf/completion.zsh
 [[ -r "/usr/share/z/z.sh" ]] && source /usr/share/z/z.sh
