@@ -4,6 +4,8 @@
 
 super + Return
     $TERMINAL
+super + shift + Return
+    $TERMINAL | bspwmfloat.sh
 super + d
     rofi -show drun
 super + shift + d

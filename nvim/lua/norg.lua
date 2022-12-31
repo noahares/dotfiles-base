@@ -5,7 +5,7 @@ require('neorg').setup {
       config = {
         workspaces = {
           notes = "~/Seafile/neorg",
-        }
+        },
       }
     },
     ["core.norg.concealer"] = {},
