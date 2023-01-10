@@ -20,13 +20,17 @@ require('telescope').setup{
   }
 }
 
-map('n', '<leader>b', '<cmd>Telescope buffers<cr>')
-map('n', '<leader>o', '<cmd>Telescope find_files<cr>')
-map('n', '<leader>h', '<cmd>Telescope oldfiles<cr>')
-map('n', '<leader>c', '<cmd>Telescope commands<cr>')
-map('n', '<leader>ch', '<cmd>Telescope command_history<cr>')
-map('n', '<leader>f', '<cmd>Telescope live_grep<cr>')
-map('n', '<leader>z', '<cmd>Telescope spell_suggest<cr>')
-map('','<F1>', '<cmd>Telescope help_tags<cr>')
+local builtin = require("telescope.builtin")
+
+map('n', '<leader>b', builtin.buffers)
+map('n', '<leader>o', builtin.find_files)
+map('n', '<leader>h', builtin.oldfiles)
+map('n', '<leader>c', builtin.commands)
+map('n', '<leader>ch', builtin.command_history)
+map('n', '<leader>f', builtin.live_grep)
+map('n', '<leader>z', builtin.spell_suggest)
+map('','<F1>', builtin.help_tags)
 map('i', '<leader>s', '<cmd>Telescope symbols<cr>')
 map("n", "<leader>u", "<cmd>Telescope undo<cr>")
+map('n', '<leader>ec', function() builtin.find_files({cwd = vim.fn.stdpath('config')}) end)
+map('n', '<leader>ed', function() builtin.find_files({search_dirs = {'$HOME/dotfiles-base', '$HOME/dotfiles-extended'}}) end)

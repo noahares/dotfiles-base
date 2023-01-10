@@ -7,11 +7,10 @@ ls.config.set_config({
 })
 
 vim.keymap.set({'i', 's'}, "<c-k>", function()
-  if ls.expand_or_locally_jumpable() then
-    print("success")
-    ls.expand_or_jump()
+  if ls.jumpable(1) then
+    ls.jump(1)
   end
-end)
+end, {silent = true})
 
 vim.keymap.set({'i', 's'}, '<c-j>', function()
   if ls.jumpable(-1) then
@@ -31,6 +30,7 @@ vim.keymap.set("n", "<leader><leader>s", "<cmd>source ~/.config/nvim/lua/luasnip
 local fmt = require('luasnip.extras.fmt').fmt
 local rep = require('luasnip.extras').rep
 local s = ls.s
+local sn = ls.snippet_node
 local i = ls.insert_node
 local c = ls.choice_node
 local t = ls.text_node
@@ -42,17 +42,28 @@ ls.cleanup()
 require("luasnip.loaders.from_vscode").lazy_load()
 
 ls.add_snippets(nil, {
-  all = {
-    s("date", f(function() return os.date("%Y-%m-%d") end)),
-  },
+  norg = {
+    s({trig="project", desc="neorg project"},
+    fmt(
+    [[
+    * <>
 
-  lua = {
-    ls.parser.parse_snippet("lf", "local $1 = function($2)\n $0\nend"),
-    s("req", fmt([[local {} = require('{}')]], {
-      f(function(name)
-        local parts = vim.split(name[1][1], ".", true)
-        return parts[#parts] or ""
-      end, { 1 }),
-    i(1) })),
+    *Project description*: <>
+
+    *Associated Tasks*:
+
+    ]],
+    { i(1, "project name"),
+      i(2, "project description")
+    },
+    { delimiters = "<>" })),
+
+    s({trig="task", desc="neorg task"},
+    fmt(
+    [[
+    - (<><> <>) <>
+    ]],
+    { i(3, " "), t("|#"), i(1, "context"), i(2, "task") },
+    { delimiters = "<>" }))
   },
 })
