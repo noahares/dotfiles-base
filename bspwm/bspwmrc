@@ -21,9 +21,10 @@ fi
 
 setbg.sh
 launch_polybar.sh &
-seafile-applet &
+pgrep -f seafile-applet &> /dev/null || seafile-applet &
 messengers.sh &
-stalonetray &
+pgrep -f stalonetray &> /dev/null || stalonetray &
+pgrep -f wacom_monitor_toggle.sh &> /dev/null || wacom_monitor_toggle.sh &
 #mycroft-start all &
 
 bspc config border_width         1
