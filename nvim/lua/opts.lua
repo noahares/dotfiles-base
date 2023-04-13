@@ -20,7 +20,9 @@ opt.smartcase = true
 opt.hlsearch = false
 
 --Save undo history
-vim.opt.undofile = true
+opt.undofile = true
+-- but not swapfiles
+opt.swapfile = false
 
 -- show lines bellow cursor
 opt.scrolloff = 5

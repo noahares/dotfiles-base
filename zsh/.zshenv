@@ -4,7 +4,7 @@ PATH=$PATH:$HOME/repos/scripts
 PATH=$PATH:$HOME/repos/scripts/yeelight
 PATH=$PATH:$HOME/.config/rofi/bin
 export EDITOR="nvim"
-export TERMINAL="st"
+export TERMINAL="alacritty"
 export BROWSER="firefox"
 export VIEWER="zathura"
 export MANPAGER='nvim +Man!'
@@ -44,3 +44,5 @@ export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quo
 export SUDO_ASKPASS=$HOME/repos/scripts/dpass.sh
 export DIFFPROG="nvim -d $1"
 export AMD_VULKAN_ICD=RADV
+export GUROBI_HOME=/usr
+export RUSTC_WRAPPER=sccache

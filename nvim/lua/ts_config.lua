@@ -1,5 +1,5 @@
 require'nvim-treesitter.configs'.setup {
-  ensure_installed = {"cpp", "c", "lua", "bash", "python", "typescript", "javascript", "norg", "norg_meta", "norg_table", "rust", "latex"},
+  ensure_installed = {"cpp", "c", "lua", "bash", "python", "typescript", "javascript", "norg", "norg_meta", "norg_table", "rust", "latex", "vim", "vimdoc"},
   highlight = {
     enable = true,
   },
@@ -58,5 +58,11 @@ require'nvim-treesitter.configs'.setup {
         ["<leader>df"] = "@function.outer",
       },
     },
+  },
+  rainbow = {
+    enable = true,
+    extended_mode = true,
+    query = 'rainbow-parens',
+    strategy = require 'ts-rainbow.strategy.global',
   },
 }

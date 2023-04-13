@@ -1,0 +1,12 @@
+
+/*control center background*/
+@define-color cc-bg #1E2127;
+
+@define-color noti-border-color rgba(255, 255, 255, 0.15);
+@define-color noti-bg #252733;
+@define-color noti-bg-hover #36394a;
+@define-color noti-bg-focus #81A1C1;
+@define-color noti-close-bg rgba(255, 255, 255, 0.1);
+@define-color noti-close-bg-hover rgba(255, 255, 255, 0.15);
+
+@define-color bg-selected #81A1C1;

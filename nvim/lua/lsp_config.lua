@@ -70,7 +70,7 @@ nvim_lsp.texlab.setup{
     }
   }
 }
-nvim_lsp.pylsp.setup{
+nvim_lsp.pyright.setup{
   capabilities = capabilities,
   on_attach=custom_attach
 }
@@ -78,7 +78,7 @@ nvim_lsp.tsserver.setup{
   capabilities = capabilities,
   on_attach=custom_attach
 }
-nvim_lsp.sumneko_lua.setup{
+nvim_lsp.lua_ls.setup{
   capabilities = capabilities,
   cmd = {'lua-language-server'},
   on_attach=custom_attach,
@@ -203,6 +203,9 @@ rt.setup({
       ["rust-analyzer"] = {
         checkOnSave = {
           command = "clippy",
+        },
+        procMacro = {
+          enable = true
         },
       },
     },
