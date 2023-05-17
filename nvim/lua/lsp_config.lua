@@ -72,7 +72,10 @@ nvim_lsp.texlab.setup{
 }
 nvim_lsp.pyright.setup{
   capabilities = capabilities,
-  on_attach=custom_attach
+  on_attach=custom_attach,
+  root_dir = function()
+    return vim.fn.getcwd()
+  end,
 }
 nvim_lsp.tsserver.setup{
   capabilities = capabilities,

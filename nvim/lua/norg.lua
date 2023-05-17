@@ -1,14 +1,14 @@
 require('neorg').setup {
   load = {
     ["core.defaults"] = {},
-    ["core.norg.dirman"] = {
+    ["core.dirman"] = {
       config = {
         workspaces = {
           notes = "~/Seafile/neorg",
         },
       }
     },
-    ["core.norg.concealer"] = {},
+    ["core.concealer"] = {},
     -- ["core.gtd.base"] = {
     --   config = {
     --     workspace = "notes",
@@ -23,16 +23,17 @@ require('neorg').setup {
         neorg_leader = ','
       }
     },
-    ["core.norg.completion"] = {
+    ["core.completion"] = {
       config = {
         engine = "nvim-cmp"
       }
     },
     ["core.integrations.telescope"] = {},
-    ["core.norg.esupports.metagen"] = {
+    ["core.esupports.metagen"] = {
       config = {
         type = "auto",
     }
-  }
+  },
+  ["core.export"] = {}
   }
 }
