@@ -64,7 +64,7 @@ set norunexec
 
 " Selected color scheme
 
-colorscheme gruvbox
+colorscheme catppuccin
 
 " Format for displaying time in file list. For example:
 " TIME_STAMP_FORMAT=%m/%d-%H:%M
@@ -140,6 +140,10 @@ command! make !!make %a
 command! mkcd :mkdir %a | cd %a
 command! vgrep vim "+grep %a"
 command! reload :write | restart
+
+" drag and drop
+command! dragon dragon-drop -a -x %f
+nmap <C-d> :dragon<CR>
 
 " ------------------------------------------------------------------------------
 

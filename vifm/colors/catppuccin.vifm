@@ -1,0 +1,29 @@
+" catppuccin color scheme approximation for vifm
+
+" Reset all styles first
+highlight clear
+
+highlight Border	cterm=none	ctermfg=183	ctermbg=default
+
+highlight TopLine	cterm=none	ctermfg=233	ctermbg=183
+highlight TopLineSel	cterm=bold	ctermfg=233	ctermbg=183
+
+highlight Win		cterm=none	ctermfg=224	ctermbg=default
+"highlight OtherWin  cterm=none	ctermfg=223	ctermbg=236
+highlight Directory	cterm=bold	ctermfg=111	ctermbg=default
+highlight CurrLine	cterm=bold,inverse	ctermfg=default	ctermbg=default
+highlight OtherLine	cterm=bold	ctermfg=default	ctermbg=235
+highlight Selected	cterm=none	ctermfg=233	ctermbg=217
+
+highlight JobLine	cterm=bold	ctermfg=116	ctermbg=238
+highlight StatusLine	cterm=bold	ctermfg=183	ctermbg=234
+highlight ErrorMsg	cterm=bold	ctermfg=211	ctermbg=default
+highlight WildMenu	cterm=bold	ctermfg=235	ctermbg=147
+highlight CmdLine	cterm=none	ctermfg=147	ctermbg=default
+
+highlight Executable	cterm=bold	ctermfg=216	ctermbg=default
+highlight Link		cterm=none	ctermfg=151	ctermbg=default
+highlight BrokenLink	cterm=bold	ctermfg=211	ctermbg=default
+highlight Device	cterm=none,standout	ctermfg=214	ctermbg=default
+highlight Fifo		cterm=none	ctermfg=172	ctermbg=default
+highlight Socket	cterm=bold	ctermfg=223	ctermbg=default
