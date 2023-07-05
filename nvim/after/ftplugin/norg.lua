@@ -6,5 +6,5 @@ vim.keymap.set("n", "<leader>nt", "<cmd>Neorg journal today<cr>", {silent = true
 vim.keymap.set({'i', 'n'}, '<leader>ll', '<cmd>Telescope neorg insert_link<cr>')
 vim.keymap.set({'i', 'n'}, '<leader>lf', '<cmd>Telescope neorg insert_file_link<cr>')
 -- cd for norg
-local workspace = require'neorg'.modules.get_module('core.norg.dirman').get_current_workspace()
+local workspace = require'neorg'.modules.get_module('core.dirman').get_current_workspace()
 vim.fn.chdir(workspace[2])

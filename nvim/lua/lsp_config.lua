@@ -256,3 +256,7 @@ nvim_lsp.ltex.setup({
     },
   },
 })
+nvim_lsp.typst_lsp.setup({
+  capabilities = capabilities,
+  on_attach = custom_attach
+})
