@@ -145,6 +145,9 @@ command! reload :write | restart
 command! dragon dragon-drop -a -x %f
 nmap <C-d> :dragon<CR>
 
+" yank path
+nnoremap yf :!echo -n %c:p | wl-copy<cr>
+
 " ------------------------------------------------------------------------------
 
 " The file type is for the default programs to be used with

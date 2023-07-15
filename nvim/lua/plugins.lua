@@ -77,11 +77,11 @@ return require('packer').startup(function(use)
     run = ":Neorg sync-parsers",
     requires = {{"nvim-lua/plenary.nvim"}, {"nvim-neorg/neorg-telescope"}}
   }
-  use {"akinsho/toggleterm.nvim", tag = 'v2.*', config = function()
-    require("toggleterm").setup{
-      open_mapping = '<leader>t',
-    }
-  end}
+  -- use {"akinsho/toggleterm.nvim", tag = '*', config = function()
+  --   require("toggleterm").setup{
+  --     open_mapping = '<leader>t',
+  --   }
+  -- end}
   use({
     'https://github.com/nat-418/boole.nvim',
     config = function()
@@ -163,6 +163,14 @@ return require('packer').startup(function(use)
   use { "theRealCarneiro/hyprland-vim-syntax",
     requires = { "nvim-treesitter/nvim-treesitter" },
   }
+  -- use {
+  --   'nosduco/remote-sshfs.nvim',
+  --   requires = { {'nvim-telescope/telescope.nvim'} },
+  --   config = function()
+  --     require('remote-sshfs').setup({})
+  --     require('telescope').load_extension 'remote-sshfs'
+  --   end
+  -- }
   -- use { 'tamton-aquib/duck.nvim' }
   -- use { 'eandrju/cellular-automaton.nvim' }
 end)

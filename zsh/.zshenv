@@ -3,6 +3,7 @@ PATH=$PATH:$HOME/.local/bin
 PATH=$PATH:$HOME/repos/scripts
 PATH=$PATH:$HOME/repos/scripts/yeelight
 PATH=$PATH:$HOME/.config/rofi/bin
+PATH=$PATH:$HOME/.local/share/cargo/bin
 export EDITOR="nvim"
 export TERMINAL="alacritty"
 export BROWSER="firefox"
