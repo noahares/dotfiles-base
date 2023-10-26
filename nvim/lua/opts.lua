@@ -3,6 +3,7 @@ local opt = vim.opt
 
 g.mapleader = ','
 g.tex_flavor = "latex"
+opt.termguicolors = true
 
 opt.switchbuf = "usetab"
 

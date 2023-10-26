@@ -1,9 +1,3 @@
--- update plugins
-vim.api.nvim_create_autocmd('BufWritePost', {
-  pattern = 'plugins.lua',
-  command = 'source <afile> | PackerCompile',
-})
-
 -- remove trailing whitespaces
 vim.api.nvim_create_autocmd('BufWritePre', {
   command = [[%s/\s\+$//e]],

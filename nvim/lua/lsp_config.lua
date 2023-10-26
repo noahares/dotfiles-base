@@ -1,6 +1,14 @@
 local map = vim.keymap.set
 local opts = { noremap=true, silent=true }
 
+local ok, wf = pcall(require, "vim.lsp._watchfiles")
+if ok then
+   -- disable lsp watcher. Too slow on linux
+   wf._watchfunc = function()
+     return function() end
+   end
+ end
+
 local custom_attach = function(_)
 	print("LSP started.");
 
@@ -73,9 +81,6 @@ nvim_lsp.texlab.setup{
 nvim_lsp.pyright.setup{
   capabilities = capabilities,
   on_attach=custom_attach,
-  root_dir = function()
-    return vim.fn.getcwd()
-  end,
 }
 nvim_lsp.tsserver.setup{
   capabilities = capabilities,
@@ -254,6 +259,18 @@ nvim_lsp.ltex.setup({
         },
       }
     },
+  },
+  filetypes = {
+    "bib",
+    "gitcommit",
+    "markdown",
+    "org",
+    "plaintex",
+    "rst",
+    "rnoweb",
+    "tex",
+    "pandoc",
+    "typst",
   },
 })
 nvim_lsp.typst_lsp.setup({

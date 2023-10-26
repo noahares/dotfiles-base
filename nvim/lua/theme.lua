@@ -1,6 +1,5 @@
 vim.cmd('syntax on')
 
-vim.o.termguicolors = true
 vim.g.catppuccin_flavour = "mocha" -- latte, frappe, macchiato, mocha
 require("catppuccin").setup({
   dim_inactive = {
