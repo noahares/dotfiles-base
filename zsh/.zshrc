@@ -8,6 +8,8 @@ bindkey -e
 # to add other keys to this hash, see: man 5 terminfo
 typeset -g -A key
 
+fpath=(~/.config/zsh/completion $fpath)
+
 key[Home]="${terminfo[khome]}"
 key[End]="${terminfo[kend]}"
 key[Insert]="${terminfo[kich1]}"
@@ -81,3 +83,5 @@ function precmd() {
     unset timer
   fi
 }
+
+eval "$(mise activate zsh)"

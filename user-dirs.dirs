@@ -2,7 +2,7 @@
 #
 # The values are relative pathnames from the home directory and
 # will be translated on a per-path-element basis into the users locale
-XDG_DESKTOP_DIR="$HOME"
+XDG_DESKTOP_DIR="$HOME/desktop"
 XDG_DOCUMENTS_DIR="$HOME/documents"
 XDG_DOWNLOAD_DIR="$HOME/downloads"
 XDG_MUSIC_DIR="$HOME/music"

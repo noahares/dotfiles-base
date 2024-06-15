@@ -110,11 +110,11 @@ require("lazy").setup({
   {'L3MON4D3/LuaSnip'},
   {'folke/todo-comments.nvim'},
   {'numToStr/Comment.nvim'},
-  {
-    "nvim-neorg/neorg",
-    build = ":Neorg sync-parsers",
-    dependencies = {{"nvim-lua/plenary.nvim"}, {"nvim-neorg/neorg-telescope"}}
-  },
+  -- {
+  --   "nvim-neorg/neorg",
+  --   build = ":Neorg sync-parsers",
+  --   dependencies = {{"nvim-lua/plenary.nvim"}, {"nvim-neorg/neorg-telescope"}}
+  -- },
   -- use {"akinsho/toggleterm.nvim", tag = '*', config = function()
   --   require("toggleterm").setup{
   --     open_mapping = '<leader>t',
@@ -220,6 +220,20 @@ require("lazy").setup({
     })
     end,
   },
+  {'kevinhwang91/nvim-bqf', ft = 'qf'},
+  {
+    "ThePrimeagen/harpoon",
+    branch = "harpoon2",
+    dependencies = { "nvim-lua/plenary.nvim" }
+  },
+  {
+    "ThePrimeagen/git-worktree.nvim",
+    dependencies = { "nvim-lua/plenary.nvim" },
+    -- config = function()
+    --   require("git-worktree").setup()
+    --   require"telescope".load_extension("git-worktree")
+    -- end
+  }
   -- use {
   --   'nosduco/remote-sshfs.nvim',
   --   requires = { {'nvim-telescope/telescope.nvim'} },
